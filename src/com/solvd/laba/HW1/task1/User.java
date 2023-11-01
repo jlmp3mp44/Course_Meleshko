@@ -1,18 +1,18 @@
-package HW1.task1;
+package com.solvd.laba.HW1.task1;
 
 public class User {
 
     private String name;
     private String surname;
     private String age;
-    private String Role;  //////Student, Teacher, Child, Adult and etc...
+    private String role;  //////Student, Teacher, Child, Adult and etc...
 
 
     public User(String name, String surname, String age, String role) {
         this.name = name;
         this.surname = surname;
         this.age = age;
-        Role = role;
+        role = role;
     }
 
     public String getName() {
@@ -41,14 +41,15 @@ public class User {
     }
 
     public String getRole() {
-        return Role;
+        return role;
     }
 
     public void setRole(String role) {
-        Role = role;
+        role = role;
     }
 
     public void printGreeting(String name, String surname){
+
         System.out.println("Hello " + name + " " + surname);
     }
     public void printYear(int age){

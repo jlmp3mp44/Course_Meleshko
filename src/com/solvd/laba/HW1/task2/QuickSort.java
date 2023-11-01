@@ -1,11 +1,8 @@
-package HW1.task2;
+package com.solvd.laba.HW1.task2;
 
 public class QuickSort {
     private int[] array;
 
-    QuickSort(int[] array){
-        this.array =  array;
-    }
     public int[] quickSort(int[] array, int lowIndex, int highIndex){
 
         if(lowIndex >= highIndex) return array;
