@@ -1,4 +1,4 @@
-package com.solvd.laba.HW1.task1;
+package com.solvd.laba.home_work1.task1;
 
 public class User {
 
@@ -12,7 +12,7 @@ public class User {
         this.name = name;
         this.surname = surname;
         this.age = age;
-        role = role;
+        this.role = role;
     }
 
     public String getName() {
@@ -45,23 +45,22 @@ public class User {
     }
 
     public void setRole(String role) {
-        role = role;
+        this.role = role;
     }
 
-    public void printGreeting(String name, String surname){
+    public void printGreeting(String name, String surname) {
 
         System.out.println("Hello " + name + " " + surname);
     }
-    public void printYear(int age){
+
+    public void printYear(int age) {
         int yearOfBirth = 2023 - age;
-        System.out.println("So, you are " + age +  " years old. That means you are " + yearOfBirth + " year of Birth");
+        System.out.println("So, you are " + age + " years old. That means you are " + yearOfBirth + " year of Birth");
     }
 
-    public void printRole (String role){
-        System.out.println("Your Role is " + role );
+    public void printRole(String role) {
+        System.out.println("Your Role is " + role);
     }
-
-
 
 
 }
