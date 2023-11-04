@@ -1,42 +1,92 @@
 package com.solvd.laba.home_work2;
 
+import java.util.Random;
+
 public class Main {
     public static void main(String[] args) {
-        Customer Mariya = new Customer("Mariya", "Vasulivska", "27");
-        Application internetStore = new Application("AStore", "2 months", "Appliation - online store with custom clothes");
+        Customer customer = new Customer("Mariya", "Vasulivska", "27", true);
+        Application application = new Application("AStore", 2,
+                "Appliation - online store with custom clothes", 3);
         String[] system = new String[]{"IOS", "Android"};
         Functional functional = new Functional(system, 10, true);
 
-        Team.Manager manager1 = new Team.Manager("Olga", "Timofieva", "1000");
-        Team.Manager manager2 = new Team.Manager("Anton", "Holinov", "1500");
-        Team.Manager manager3 = new Team.Manager("Anna", "Vikonova", "1300");
+        int sizeOfTeam = application.getComplexityApp() * 3;
+        long seed = 12345L;
+        int minSalary = 800;
+        int maxSalary = 2500;
+        Random random = new Random(seed);
+        int randomSalary = random.nextInt(maxSalary - minSalary + 1) + minSalary;
 
-        Team.Developer developer1 = new Team.Developer("Kate", "Lopunkova", "Jun", "1300");
-        Team.Developer developer2 = new Team.Developer("Dima", "Akrunov", "Middle", "2500");
-        Team.Developer developer3 = new Team.Developer("Polina", "Davinova", "Middle", "2600");
+        Developer[] developers = makeDevelopers(sizeOfTeam, randomSalary);
+        Manager[] managers = makeManagers(sizeOfTeam, randomSalary);
+        QATester[] qaTesters = makeQATeaters(sizeOfTeam, randomSalary);
 
-        Team.Developer[] developers = new Team.Developer[]{developer1, developer2, developer3};
-        Team.Manager[] managers = new Team.Manager[]{manager1, manager2, manager3};
 
-        Team team = new Team(developers, managers);
+        Team team = new Team(developers, managers, qaTesters);
 
-        Technicks.LapTop lapTop1 = new Technicks.LapTop(600, "lenovo");
-        Technicks.LapTop lapTop2 = new Technicks.LapTop(700, "asus");
-        Technicks.LapTop lapTop3 = new Technicks.LapTop(800, "lenovo");
-        Technicks.LapTop lapTop4 = new Technicks.LapTop(1000, "macBook");
+        int minCostLapTop = 400;
+        int maxCostLapTop = 1200;
+        int randomCostLapTop = random.nextInt(maxCostLapTop - minCostLapTop + 1) + minCostLapTop;
 
-        Technicks.Mouse mouse1 = new Technicks.Mouse(100, "lenovo");
-        Technicks.Mouse mouse2 = new Technicks.Mouse(130, "asus");
-        Technicks.Mouse mouse3 = new Technicks.Mouse(120, "lenovo");
-        Technicks.Mouse mouse4 = new Technicks.Mouse(150, "maBook");
+        LapTop[] lapTops = makeLapTops(sizeOfTeam, randomCostLapTop);
 
-        Technicks.LapTop[] lapTops = new Technicks.LapTop[]{lapTop1, lapTop2, lapTop3, lapTop4};
-        Technicks.Mouse[] mouses = new Technicks.Mouse[]{mouse1, mouse2, mouse3, mouse4};
+        int minCostMouse = 50;
+        int maxCostMouse = 150;
+        int randomCostMouse = random.nextInt(maxCostMouse - minCostMouse + 1) + minCostMouse;
+
+
+        Mouse[] mouses = makeMouses(sizeOfTeam, randomCostMouse);
 
         Technicks technicks = new Technicks(lapTops, mouses);
 
-        CalculatorCost calculatorCost = new CalculatorCost(internetStore, functional, team, developers, managers, technicks, lapTops, mouses);
+        Company company = new Company("Brains", team, 5);
+        System.out.println(application.getTimeToMake());
 
+        CalculatorCost calculatorCost = new CalculatorCost(customer, application, functional, team, developers,
+                managers, qaTesters, technicks, lapTops, mouses, company);
+        System.out.println("The price for this appliation will be");
+        System.out.println(calculatorCost.calculateCost() + " $");
 
     }
+
+    public static Developer[] makeDevelopers(int sizeOfTeam, int randomSalary) {
+        Developer developers[] = new Developer[sizeOfTeam / 3];
+        for (int i = 0; i < developers.length; i++) {
+            developers[i] = new Developer("Developer" + (i + 1), "Surname", "Position", randomSalary);
+        }
+        return developers;
+    }
+
+    public static Manager[] makeManagers(int sizeOfTeam, int randomSalary) {
+        Manager managers[] = new Manager[sizeOfTeam / 3];
+        for (int i = 0; i < managers.length; i++) {
+            managers[i] = new Manager("Developer" + (i + 1), "Surname", randomSalary);
+        }
+        return managers;
+    }
+
+    public static QATester[] makeQATeaters(int sizeOfTeam, int randomSalary) {
+        QATester qaTesters[] = new QATester[sizeOfTeam / 3];
+        for (int i = 0; i < qaTesters.length; i++) {
+            qaTesters[i] = new QATester("Developer" + (i + 1), "Surname", "Position", randomSalary);
+        }
+        return qaTesters;
+    }
+
+    public static LapTop[] makeLapTops(int sizeOfTeam, int randomCost) {
+        LapTop[] lapTops = new LapTop[sizeOfTeam];
+        for (int i = 0; i < sizeOfTeam; i++) {
+            lapTops[i] = new LapTop(randomCost, "laptop" + (i + 1));
+        }
+        return lapTops;
+    }
+
+    public static Mouse[] makeMouses(int sizeOfTeam, int randomCost) {
+        Mouse[] mouses = new Mouse[sizeOfTeam];
+        for (int i = 0; i < sizeOfTeam; i++) {
+            mouses[i] = new Mouse(randomCost, "mouse" + (i + 1));
+        }
+        return mouses;
+    }
+
 }

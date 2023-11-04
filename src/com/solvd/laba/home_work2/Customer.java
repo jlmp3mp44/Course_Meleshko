@@ -4,11 +4,13 @@ public class Customer {
     private String name;
     private String surname;
     private String age;
+    private boolean regularCustomer;
 
-    public Customer(String name, String surname, String age) {
+    public Customer(String name, String surname, String age, boolean regularCustomer) {
         this.name = name;
         this.surname = surname;
         this.age = age;
+        this.regularCustomer = regularCustomer;
     }
 
     public void setName(String name) {
@@ -35,4 +37,11 @@ public class Customer {
         return age;
     }
 
+    public boolean isRegularCustomer() {
+        return regularCustomer;
+    }
+
+    public void setRegularCustomer(boolean regularCustomer) {
+        this.regularCustomer = regularCustomer;
+    }
 }

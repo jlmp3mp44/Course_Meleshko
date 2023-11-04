@@ -4,10 +4,12 @@ public class Team {
 
     public Developer[] developers;
     public Manager[] managers;
+    public QATester[] qaTesters;
 
-    public Team(Developer[] developers, Manager[] managers) {
+    public Team(Developer[] developers, Manager[] managers, QATester[] qaTesters) {
         this.developers = developers;
         this.managers = managers;
+        this.qaTesters = qaTesters;
     }
 
     public Developer[] getDevelopers() {
@@ -26,66 +28,11 @@ public class Team {
         this.managers = managers;
     }
 
-    static abstract class Employee {
-        private String name;
-        private String surname;
-        private String salary;
-
-        public Employee(String name, String surname, String salary) {
-            this.name = name;
-            this.surname = surname;
-            this.salary = salary;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public String getSurname() {
-            return surname;
-        }
-
-        public void setSurname(String surname) {
-            this.surname = surname;
-        }
-
-        public String getSalary() {
-            return salary;
-        }
-
-        public void setSalary(String salary) {
-            this.salary = salary;
-        }
+    public QATester[] getQaTesters() {
+        return qaTesters;
     }
 
-    public static class Developer extends Employee {
-        private String level;
-
-        public Developer(String name, String surname, String level, String salary) {
-            super(name, surname, level);
-            this.level = level;
-        }
-
-
-        public String getLevel() {
-            return level;
-        }
-
-        public void setLevel(String level) {
-            this.level = level;
-        }
-
-    }
-
-    public static class Manager extends Employee {
-
-        public Manager(String name, String surname, String salary) {
-            super(name, surname, salary);
-        }
-
+    public void setQaTesters(QATester[] qaTesters) {
+        this.qaTesters = qaTesters;
     }
 }

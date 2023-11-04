@@ -1,25 +1,35 @@
 package com.solvd.laba.home_work2;
 
-public class CalculatorCost {
+import java.util.Arrays;
 
+public class CalculatorCost {
+    private Customer customer;
     private Application application;
     private Functional functional;
     private Team team;
-    private Team.Developer[] developers;
-    private Team.Manager[] managers;
+    private Developer[] developers;
+    private Manager[] managers;
+    private QATester[] qaTesters;
     private Technicks technicks;
-    private Technicks.LapTop[] lapTops;
-    private Technicks.Mouse[] mouses;
+    private LapTop[] lapTops;
+    private Mouse[] mouses;
+    private Company company;
 
-    public CalculatorCost(Application application, Functional functional, Team team, Team.Developer[] developers, Team.Manager[] managers, Technicks technicks, Technicks.LapTop[] lapTops, Technicks.Mouse[] mouses) {
+
+    public CalculatorCost(Customer customer, Application application, Functional functional, Team team,
+                          Developer[] developers, Manager[] managers, QATester[] qaTesters,
+                          Technicks technicks, LapTop[] lapTops, Mouse[] mouses, Company company) {
+        this.customer = customer;
         this.application = application;
         this.functional = functional;
         this.team = team;
         this.developers = developers;
         this.managers = managers;
+        this.qaTesters = qaTesters;
         this.technicks = technicks;
         this.lapTops = lapTops;
         this.mouses = mouses;
+        this.company = company;
     }
 
     public Application getApplication() {
@@ -46,19 +56,19 @@ public class CalculatorCost {
         this.team = team;
     }
 
-    public Team.Developer[] getDevelopers() {
+    public Developer[] getDevelopers() {
         return developers;
     }
 
-    public void setDevelopers(Team.Developer[] developers) {
+    public void setDevelopers(Developer[] developers) {
         this.developers = developers;
     }
 
-    public Team.Manager[] getManagers() {
+    public Manager[] getManagers() {
         return managers;
     }
 
-    public void setManagers(Team.Manager[] managers) {
+    public void setManagers(Manager[] managers) {
         this.managers = managers;
     }
 
@@ -70,19 +80,80 @@ public class CalculatorCost {
         this.technicks = technicks;
     }
 
-    public Technicks.LapTop[] getLapTops() {
+    public LapTop[] getLapTops() {
         return lapTops;
     }
 
-    public void setLapTops(Technicks.LapTop[] lapTops) {
+    public void setLapTops(LapTop[] lapTops) {
         this.lapTops = lapTops;
     }
 
-    public Technicks.Mouse[] getMouses() {
+    public Mouse[] getMouses() {
         return mouses;
     }
 
-    public void setMouses(Technicks.Mouse[] mouses) {
+    public void setMouses(Mouse[] mouses) {
         this.mouses = mouses;
+    }
+
+    public QATester[] getQaTesters() {
+        return qaTesters;
+    }
+
+    public void setQaTesters(QATester[] qaTesters) {
+        this.qaTesters = qaTesters;
+    }
+
+    public Company getCompany() {
+        return company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
+    }
+
+    public int calculateAllSalary() {
+        int salaryDevelop = Arrays.stream(developers)
+                .mapToInt(Developer::getSalary)
+                .sum();
+        int salaryManager = Arrays.stream(managers)
+                .mapToInt(Manager::getSalary)
+                .sum();
+        int salaryQATester = Arrays.stream(qaTesters)
+                .mapToInt(QATester::getSalary)
+                .sum();
+        return salaryDevelop + salaryManager + salaryQATester;
+    }
+
+    public int calculateCostDevices() {
+        int costLapTop = Arrays.stream(lapTops)
+                .mapToInt(LapTop::getCost)
+                .sum();
+        int costMouses = Arrays.stream(mouses)
+                .mapToInt(Mouse::getCost)
+                .sum();
+        return costLapTop + costMouses;
+    }
+
+    public int calculateCost() {
+        int time = application.getTimeToMake();
+        int complexity = application.getComplexityApp();
+        int system = functional.getSystem().length;
+        int numOfTasks = functional.getNumberOfTasks();
+        int mediaContent = functional.isMediaContent() ? 2 : 0;
+        int sizeOfCompany = application.getComplexityApp() * 3;
+        int discount = customer.isRegularCustomer() ? 7 : 0;
+        double perantageCompany = company.getPercentageOfAmount();
+
+        int fullSalary = calculateAllSalary();
+        int fullCostDevices = calculateCostDevices();
+
+
+        double costWithoutPercantage = (fullSalary + fullCostDevices) / 2 + (complexity * time) +
+                (system * complexity) + (numOfTasks * mediaContent);
+        double costWithDiscount = costWithoutPercantage - costWithoutPercantage * discount / 100;
+        double fullCost = costWithDiscount + costWithDiscount * perantageCompany / 100;
+
+        return (int) fullCost;
     }
 }
