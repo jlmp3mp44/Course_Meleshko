@@ -52,7 +52,7 @@ public class Main {
     public static Developer[] makeDevelopers(int sizeOfTeam, int randomSalary) {
         Developer developers[] = new Developer[sizeOfTeam / 3];
         for (int i = 0; i < developers.length; i++) {
-            developers[i] = new Developer("Developer" + (i + 1), "Surname", "Position", randomSalary);
+            developers[i] = new Developer("Developer" + (i + 1), "Surname", randomSalary);
         }
         return developers;
     }
@@ -68,7 +68,7 @@ public class Main {
     public static QATester[] makeQATeaters(int sizeOfTeam, int randomSalary) {
         QATester qaTesters[] = new QATester[sizeOfTeam / 3];
         for (int i = 0; i < qaTesters.length; i++) {
-            qaTesters[i] = new QATester("Developer" + (i + 1), "Surname", "Position", randomSalary);
+            qaTesters[i] = new QATester("Developer" + (i + 1), "Surname", randomSalary);
         }
         return qaTesters;
     }
