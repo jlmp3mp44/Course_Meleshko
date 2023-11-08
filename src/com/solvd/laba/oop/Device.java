@@ -1,8 +1,8 @@
-package com.solvd.laba.home_work2;
+package com.solvd.laba.oop;
 
 abstract class Device {
-    private int cost;
-    private String name;
+    protected int cost;
+    protected String name;
 
     public Device(int cost, String name) {
         this.cost = cost;

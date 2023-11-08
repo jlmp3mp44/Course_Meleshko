@@ -1,4 +1,4 @@
-package com.solvd.laba.home_work2;
+package com.solvd.laba.oop;
 
 public class Customer {
     private String name;

@@ -1,17 +1,16 @@
-package com.solvd.laba.home_work2;
+package com.solvd.laba.oop;
 
 public class Application {
 
     private String nameApplication;
     private int timeToMake; ////////in month
     private String decription;
-    private int complexityApp; ///////////from 1 to 5
+    ///////////from 1 to 5
 
-    public Application(String nameApplication, int timeToMake, String decription, int complexityApp) {
+    public Application(String nameApplication, int timeToMake, String decription) {
         this.nameApplication = nameApplication;
         this.timeToMake = timeToMake;
         this.decription = decription;
-        this.complexityApp = complexityApp;
     }
 
     public String getNameApplication() {
@@ -38,11 +37,4 @@ public class Application {
         this.decription = decription;
     }
 
-    public int getComplexityApp() {
-        return complexityApp;
-    }
-
-    public void setComplexityApp(int complexityApp) {
-        this.complexityApp = complexityApp;
-    }
 }

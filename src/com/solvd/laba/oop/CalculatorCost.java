@@ -1,4 +1,4 @@
-package com.solvd.laba.home_work2;
+package com.solvd.laba.oop;
 
 import java.util.Arrays;
 
@@ -9,7 +9,7 @@ public class CalculatorCost {
     private Team team;
     private Developer[] developers;
     private Manager[] managers;
-    private QATester[] qaTesters;
+    private QAEngineer[] qaEngineers;
     private Technicks technicks;
     private LapTop[] lapTops;
     private Mouse[] mouses;
@@ -17,7 +17,7 @@ public class CalculatorCost {
 
 
     public CalculatorCost(Customer customer, Application application, Functional functional, Team team,
-                          Developer[] developers, Manager[] managers, QATester[] qaTesters,
+                          Developer[] developers, Manager[] managers, QAEngineer[] qaEngineers,
                           Technicks technicks, LapTop[] lapTops, Mouse[] mouses, Company company) {
         this.customer = customer;
         this.application = application;
@@ -25,7 +25,7 @@ public class CalculatorCost {
         this.team = team;
         this.developers = developers;
         this.managers = managers;
-        this.qaTesters = qaTesters;
+        this.qaEngineers = qaEngineers;
         this.technicks = technicks;
         this.lapTops = lapTops;
         this.mouses = mouses;
@@ -96,12 +96,12 @@ public class CalculatorCost {
         this.mouses = mouses;
     }
 
-    public QATester[] getQaTesters() {
-        return qaTesters;
+    public QAEngineer[] getQaTesters() {
+        return qaEngineers;
     }
 
-    public void setQaTesters(QATester[] qaTesters) {
-        this.qaTesters = qaTesters;
+    public void setQaTesters(QAEngineer[] qaEngineers) {
+        this.qaEngineers = qaEngineers;
     }
 
     public Company getCompany() {
@@ -114,13 +114,13 @@ public class CalculatorCost {
 
     public int calculateAllSalary() {
         int salaryDevelop = Arrays.stream(developers)
-                .mapToInt(Developer::getSalary)
+                .mapToInt(Developer::getFullSalary)
                 .sum();
         int salaryManager = Arrays.stream(managers)
-                .mapToInt(Manager::getSalary)
+                .mapToInt(Manager::getFullSalary)
                 .sum();
-        int salaryQATester = Arrays.stream(qaTesters)
-                .mapToInt(QATester::getSalary)
+        int salaryQATester = Arrays.stream(qaEngineers)
+                .mapToInt(QAEngineer::getFullSalary)
                 .sum();
         return salaryDevelop + salaryManager + salaryQATester;
     }
@@ -137,11 +137,10 @@ public class CalculatorCost {
 
     public int calculateCost() {
         int time = application.getTimeToMake();
-        int complexity = application.getComplexityApp();
+        int complexity = functional.getComplexityApp();
         int system = functional.getSystem().length;
         int numOfTasks = functional.getNumberOfTasks();
         int mediaContent = functional.isMediaContent() ? 2 : 0;
-        int sizeOfCompany = application.getComplexityApp() * 3;
         int discount = customer.isRegularCustomer() ? 7 : 0;
         double perantageCompany = company.getPercentageOfAmount();
 
