@@ -1,8 +1,7 @@
 package com.solvd.laba.oop;
 
-import java.util.logging.Level;
-
 public class EmployeeGenerator {
+
     static int nameIndex = 0;
     static int surnameIndex = 0;
     static int levelIndex = 0;

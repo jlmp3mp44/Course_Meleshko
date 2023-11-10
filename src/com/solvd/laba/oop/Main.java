@@ -7,8 +7,8 @@ public class Main {
 
         long seed = 12345L;
         Random random = new Random(seed);
-        Application application = new Application("AStore", 2,
-                "Appliation - online store with custom clothes");
+        final Application application = new Application("AStore", 2,
+                "Appliation - online store with custom clothes", 0);
         int minCostLapTop = 400;
         int maxCostLapTop = 1200;
         int randomCostLapTop = random.nextInt(maxCostLapTop - minCostLapTop + 1) + minCostLapTop;
@@ -19,7 +19,7 @@ public class Main {
         Team teamNull = new Team(null, null, null);
         Company company = new Company("Brains", teamNull, 5);
 
-        Customer customer = new Customer("Mariya", "Vasulivska", "27", true);
+        Customer customer = new Customer("Mariya", "Vasulivska", true);
 
         String[] system = new String[]{"IOS", "Android"};
         Functional functional = new Functional(system, 13, true, 3);
@@ -27,7 +27,7 @@ public class Main {
 
         Developer[] developers = makeDevelopers(company, functional, tasksForEveryone);
         Manager[] managers = makeManagers(company, functional, tasksForEveryone);
-        QAEngineer[] qaEngineers = makeQATeaters(company, functional, tasksForEveryone);
+        QAEngineer[] qaEngineers = makeQAEngineers(company, functional, tasksForEveryone);
 
         Team team = new Team(developers, managers, qaEngineers);
         company.setTeam(team);
@@ -40,12 +40,17 @@ public class Main {
 
         CalculatorCost calculatorCost = new CalculatorCost(customer, application, functional, team, developers,
                 managers, qaEngineers, technicks, lapTops, mouses, company);
+        int cost = calculatorCost.calculateCost();
+        application.setCost(cost);
         System.out.println("The price for this appliation will be");
-        System.out.println(calculatorCost.calculateCost() + " $");
+        System.out.println(cost + " $");
 
 
         System.out.println("INFO ABOUT EMPLOYEES");
-        System.out.println(team.allEmployees());
+        System.out.println(team.getInfo());
+
+        System.out.println("INFO ABOUT TECHNICKS");
+        System.out.println(technicks.getInfo());
     }
 
     public static Developer[] makeDevelopers(Company company, Functional functional, int tasks) {
@@ -66,7 +71,7 @@ public class Main {
         return managers;
     }
 
-    public static QAEngineer[] makeQATeaters(Company company, Functional functional, int tasks) {
+    public static QAEngineer[] makeQAEngineers(Company company, Functional functional, int tasks) {
         QAEngineer qaEngineers[] = new QAEngineer[company.setNumOfQA(functional)];
         for (int i = 0; i < qaEngineers.length; i++) {
             qaEngineers[i] = new QAEngineer(EmployeeGenerator.getNextName(), EmployeeGenerator.getNextSurname(),
@@ -78,7 +83,7 @@ public class Main {
     public static LapTop[] makeLapTops(int sizeOfTeam, int randomCost) {
         LapTop[] lapTops = new LapTop[sizeOfTeam];
         for (int i = 0; i < sizeOfTeam; i++) {
-            lapTops[i] = new LapTop(randomCost, "laptop" + (i + 1));
+            lapTops[i] = new LapTop(randomCost, DeviceGenerator.getNextLapTopName());
         }
         return lapTops;
     }
@@ -86,7 +91,7 @@ public class Main {
     public static Mouse[] makeMouses(int sizeOfTeam, int randomCost) {
         Mouse[] mouses = new Mouse[sizeOfTeam];
         for (int i = 0; i < sizeOfTeam; i++) {
-            mouses[i] = new Mouse(randomCost, "mouse" + (i + 1));
+            mouses[i] = new Mouse(randomCost, DeviceGenerator.getNextMouseName());
         }
         return mouses;
     }

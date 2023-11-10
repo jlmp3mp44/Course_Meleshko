@@ -2,7 +2,7 @@ package com.solvd.laba.oop;
 
 import java.util.Arrays;
 
-public class CalculatorCost {
+public final class CalculatorCost implements CalculatorCostInterface {
     private Customer customer;
     private Application application;
     private Functional functional;
@@ -114,23 +114,23 @@ public class CalculatorCost {
 
     public int calculateAllSalary() {
         int salaryDevelop = Arrays.stream(developers)
-                .mapToInt(Developer::getFullSalary)
+                .mapToInt(Employee::getFullSalary)
                 .sum();
         int salaryManager = Arrays.stream(managers)
-                .mapToInt(Manager::getFullSalary)
+                .mapToInt(Employee::getFullSalary)
                 .sum();
         int salaryQATester = Arrays.stream(qaEngineers)
-                .mapToInt(QAEngineer::getFullSalary)
+                .mapToInt(Employee::getFullSalary)
                 .sum();
         return salaryDevelop + salaryManager + salaryQATester;
     }
 
     public int calculateCostDevices() {
         int costLapTop = Arrays.stream(lapTops)
-                .mapToInt(LapTop::getCost)
+                .mapToInt(CostableInterface::getCost)
                 .sum();
         int costMouses = Arrays.stream(mouses)
-                .mapToInt(Mouse::getCost)
+                .mapToInt(CostableInterface::getCost)
                 .sum();
         return costLapTop + costMouses;
     }
@@ -155,4 +155,5 @@ public class CalculatorCost {
 
         return (int) fullCost;
     }
+
 }

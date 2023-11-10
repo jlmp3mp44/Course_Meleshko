@@ -1,6 +1,6 @@
 package com.solvd.laba.oop;
 
-public class Technicks {
+public class Technicks implements InfoInterface {
     private LapTop[] lapTops;
     private Mouse[] mouses;
 
@@ -25,5 +25,17 @@ public class Technicks {
         this.mouses = mouses;
     }
 
+    public final String getInfo() {
+        String result = "";
+        result += "LapTops \n";
+        for (LapTop lapTop : lapTops) {
+            result += lapTop.getName() + ";  ";
+        }
+        result += "\nMouses \n";
+        for (Mouse mouse : mouses) {
+            result += mouse.getName() + ";  ";
+        }
+        return result;
+    }
 
 }

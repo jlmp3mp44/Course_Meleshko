@@ -1,6 +1,6 @@
 package com.solvd.laba.oop;
 
-public class Team {
+public class Team implements InfoInterface {
 
     public Developer[] developers;
     public Manager[] managers;
@@ -36,7 +36,7 @@ public class Team {
         this.qaEngineers = qaEngineers;
     }
 
-    public String allEmployees() {
+    public final String getInfo() {
         String result = "";
         result += "DEVELOPERS \n";
         for (Developer developer : developers) {
@@ -51,6 +51,5 @@ public class Team {
             result += qaEngineer.getName() + " " + qaEngineer.getSurname() + ";  ";
         }
         return result;
-
     }
 }

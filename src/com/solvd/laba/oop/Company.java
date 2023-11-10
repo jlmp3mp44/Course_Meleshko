@@ -1,6 +1,6 @@
 package com.solvd.laba.oop;
 
-public class Company {
+public final class Company implements NameableInterface {
     private String name;
     private Team team;
     private double percentageOfAmount;
@@ -11,6 +11,7 @@ public class Company {
         this.percentageOfAmount = percentageOfAmount;
     }
 
+    @Override
     public String getName() {
         return name;
     }
@@ -18,6 +19,7 @@ public class Company {
     public void setName(String name) {
         this.name = name;
     }
+
 
     public Team getTeam() {
         return team;

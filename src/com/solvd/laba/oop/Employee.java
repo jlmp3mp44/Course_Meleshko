@@ -1,41 +1,31 @@
 package com.solvd.laba.oop;
 
-abstract class Employee {
+abstract class Employee implements FullNameableInterface {
     protected static int tasksForEveryOne;
-    private String name;
-    private String surname;
-    protected static int baseSalary = 1000;
+    private final String name;
+    private final String surname;
+    protected static final int BASE_SALARY = 1000;
 
     public Employee(String name, String surname) {
         this.name = name;
         this.surname = surname;
     }
 
+    @Override
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
+    @Override
     public String getSurname() {
         return surname;
     }
 
-    public void setSurname(String surname) {
-        this.surname = surname;
+    public final int getBaseSalary() {
+        return BASE_SALARY;
     }
 
-    public int getBaseSalary() {
-        return baseSalary;
-    }
-
-    public void setBaseSalary(int salary) {
-        this.baseSalary = salary;
-    }
-
-    public static int getTasksForEveryOne(Functional functional) {
+    public static final int getTasksForEveryOne(Functional functional) {
         tasksForEveryOne = functional.getNumberOfTasks() / 5;
         return tasksForEveryOne;
     }

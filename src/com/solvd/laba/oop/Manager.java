@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Manager extends Employee {
     private int numOfDevelopers;
-    private int experience;
+    private final int experience;
 
     public Manager(String name, String surname, int numOfDevelopers, int experience) {
 
@@ -21,10 +21,6 @@ public class Manager extends Employee {
         this.numOfDevelopers = numOfDevelopers;
     }
 
-
-    public void setExperience(int experience) {
-        this.experience = experience;
-    }
 
     @Override
     public int getFullSalary() {
