@@ -1,14 +1,18 @@
 package com.solvd.laba.oop;
 
+import com.solvd.laba.oop.Interfaces.FullNameableInterface;
+
 public final class Customer implements FullNameableInterface {
     private final String NAME;
     private final String surname;
     private boolean regularCustomer;
+    private Application application;
 
-    public Customer(String name, String surname, boolean regularCustomer) {
+    public Customer(String name, String surname, boolean regularCustomer, Application application) {
         this.NAME = name;
         this.surname = surname;
         this.regularCustomer = regularCustomer;
+        this.application = application;
     }
 
     @Override
@@ -27,5 +31,13 @@ public final class Customer implements FullNameableInterface {
 
     public void setRegularCustomer(boolean regularCustomer) {
         this.regularCustomer = regularCustomer;
+    }
+
+    public Application getApplication() {
+        return application;
+    }
+
+    public void setApplication(Application application) {
+        this.application = application;
     }
 }

@@ -1,5 +1,10 @@
 package com.solvd.laba.oop;
 
+import com.solvd.laba.oop.Exceptions.CostApplicationExpensiveException;
+import com.solvd.laba.oop.Exceptions.PriceDeviceZeroOrLessException;
+import com.solvd.laba.oop.Exceptions.SalaryZeroOrLessException;
+import com.solvd.laba.oop.Interfaces.CalculatorCostInterface;
+
 import java.util.Arrays;
 
 public final class CalculatorCost implements CalculatorCostInterface {
@@ -112,30 +117,69 @@ public final class CalculatorCost implements CalculatorCostInterface {
         this.company = company;
     }
 
+    // Sum salary every employee
     public int calculateAllSalary() {
-        int salaryDevelop = Arrays.stream(developers)
-                .mapToInt(Employee::getFullSalary)
-                .sum();
-        int salaryManager = Arrays.stream(managers)
-                .mapToInt(Employee::getFullSalary)
-                .sum();
-        int salaryQATester = Arrays.stream(qaEngineers)
-                .mapToInt(Employee::getFullSalary)
-                .sum();
-        return salaryDevelop + salaryManager + salaryQATester;
+        int totalSalary = 0;
+        totalSalary += calculateAndValidateSalary(developers, "Developer");
+        totalSalary += calculateAndValidateSalary(managers, "Manager");
+        totalSalary += calculateAndValidateSalary(qaEngineers, "QA Engineer");
+
+        return totalSalary;
     }
 
+    private int calculateAndValidateSalary(Employee[] employees, String category) {
+        return Arrays.stream(employees)
+                .mapToInt(employee -> {
+                    try {
+                        validateSalary(employee.getFullSalary());
+                    } catch (SalaryZeroOrLessException e) {
+                        System.out.println("The salary one of " + category + " = null");
+                        System.out.println("CHANGE THE SALARY");
+                        System.exit(1);
+                    }
+                    return employee.getFullSalary();
+                })
+                .sum();
+    }
+
+    //hek the salary  meets the requirements
+    private void validateSalary(int salary) throws SalaryZeroOrLessException {
+        if (salary <= 0) {
+            throw new SalaryZeroOrLessException();
+        }
+    }
+
+    //sum all cost devices
     public int calculateCostDevices() {
-        int costLapTop = Arrays.stream(lapTops)
-                .mapToInt(CostableInterface::getCost)
-                .sum();
-        int costMouses = Arrays.stream(mouses)
-                .mapToInt(CostableInterface::getCost)
-                .sum();
-        return costLapTop + costMouses;
+        int costLapTops = calculateAndValidateCostDevices(lapTops, "LapTops");
+        int costMouses = calculateAndValidateCostDevices(mouses, "Mouses");
+        return costLapTops + costMouses;
     }
 
+    public int calculateAndValidateCostDevices(Device[] devices, String category) {
+        int costDevice = Arrays.stream(devices)
+                .mapToInt(device -> {
+                    try {
+                        validatePriceDevice(device.getCost());
+                    } catch (PriceDeviceZeroOrLessException e) {
+                        System.out.println("The price one of the  " + category + " is null");
+                        System.out.println("CHANGE THE PRICE OF " + category);
+                        System.exit(1);
+                    }
+                    return device.getCost();
+                })
+                .sum();
+        return costDevice;
+    }
+
+    //check the cost of devices meets the requirements
+    public void validatePriceDevice(int price) throws PriceDeviceZeroOrLessException {
+        if (price <= 0) throw new PriceDeviceZeroOrLessException();
+    }
+
+    //calculate the full cost of application
     public int calculateCost() {
+        int fullCost = 0;
         int time = application.getTimeToMake();
         int complexity = functional.getComplexityApp();
         int system = functional.getSystem().length;
@@ -151,9 +195,19 @@ public final class CalculatorCost implements CalculatorCostInterface {
         double costWithoutPercantage = (fullSalary + fullCostDevices) / 2 + (complexity * time) +
                 (system * complexity) + (numOfTasks * mediaContent);
         double costWithDiscount = costWithoutPercantage - costWithoutPercantage * discount / 100;
-        double fullCost = costWithDiscount + costWithDiscount * perantageCompany / 100;
+        try {
+            fullCost = (int) (costWithDiscount + costWithDiscount * perantageCompany / 100);
+            validateCostApplication(fullCost);
+        } catch (CostApplicationExpensiveException e) {
+            System.out.println("The cost application very expensive, Customer refused the purchase");
+            System.exit(1);
+        }
+        return fullCost;
+    }
 
-        return (int) fullCost;
+    //check the application cost meets the requirements
+    public void validateCostApplication(int cost) throws CostApplicationExpensiveException {
+        if (cost > 15000) throw new CostApplicationExpensiveException();
     }
 
 }

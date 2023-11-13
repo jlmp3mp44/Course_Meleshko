@@ -1,5 +1,7 @@
 package com.solvd.laba.oop;
 
+import com.solvd.laba.oop.Interfaces.InfoInterface;
+
 public class Technicks implements InfoInterface {
     private LapTop[] lapTops;
     private Mouse[] mouses;
@@ -25,15 +27,16 @@ public class Technicks implements InfoInterface {
         this.mouses = mouses;
     }
 
+    //get the main information about technicks, names of devices, and their properties
     public final String getInfo() {
         String result = "";
         result += "LapTops \n";
         for (LapTop lapTop : lapTops) {
-            result += lapTop.getName() + ";  ";
+            result += lapTop.toString() + "\n";
         }
         result += "\nMouses \n";
         for (Mouse mouse : mouses) {
-            result += mouse.getName() + ";  ";
+            result += mouse.toString() + "\n";
         }
         return result;
     }

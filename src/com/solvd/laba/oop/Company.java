@@ -1,5 +1,7 @@
 package com.solvd.laba.oop;
 
+import com.solvd.laba.oop.Interfaces.NameableInterface;
+
 public final class Company implements NameableInterface {
     private String name;
     private Team team;
@@ -37,6 +39,7 @@ public final class Company implements NameableInterface {
         this.percentageOfAmount = percentageOfAmount;
     }
 
+    //set the number of employees depends on tasks in application
     public int setNumOfDevelopes(Functional functional) {
         int numOfTasks = functional.getNumberOfTasks();
         int numOfDevelopers = numOfTasks / 5;

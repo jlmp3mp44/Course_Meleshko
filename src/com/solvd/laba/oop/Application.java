@@ -1,5 +1,8 @@
 package com.solvd.laba.oop;
 
+import com.solvd.laba.oop.Interfaces.CostableInterface;
+import com.solvd.laba.oop.Interfaces.NameableInterface;
+
 public class Application implements NameableInterface, CostableInterface {
 
     private final String NAME;

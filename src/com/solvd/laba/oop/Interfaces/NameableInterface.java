@@ -1,4 +1,4 @@
-package com.solvd.laba.oop;
+package com.solvd.laba.oop.Interfaces;
 
 public interface NameableInterface {
     String getName();

@@ -1,5 +1,8 @@
 package com.solvd.laba.oop;
 
+import com.solvd.laba.oop.Interfaces.CostableInterface;
+import com.solvd.laba.oop.Interfaces.NameableInterface;
+
 abstract class Device implements NameableInterface, CostableInterface {
     protected int cost;
     protected String name;

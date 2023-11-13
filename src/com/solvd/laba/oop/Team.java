@@ -1,5 +1,8 @@
 package com.solvd.laba.oop;
 
+import com.solvd.laba.oop.Exceptions.SizeOfTeamSmallException;
+import com.solvd.laba.oop.Interfaces.InfoInterface;
+
 public class Team implements InfoInterface {
 
     public Developer[] developers;
@@ -36,20 +39,33 @@ public class Team implements InfoInterface {
         this.qaEngineers = qaEngineers;
     }
 
+    //get the main information about team, names and surnames of employees
     public final String getInfo() {
+        try {
+            int sizeOfTeam = developers.length + managers.length + qaEngineers.length;
+            validateSizeOfTeam(sizeOfTeam);
+        } catch (SizeOfTeamSmallException e) {
+            System.out.println("Size of team very small, This project is not  convenient for the company");
+            System.exit(1);
+        }
         String result = "";
         result += "DEVELOPERS \n";
         for (Developer developer : developers) {
-            result += developer.getName() + " " + developer.getSurname() + ";  ";
+            result += developer.toString() + "/n";
         }
         result += "\nMANAGERS \n";
         for (Manager manager : managers) {
-            result += manager.getName() + " " + manager.getSurname() + ";  ";
+            result += manager.toString() + "\n";
         }
         result += "\nQA ENGINEER \n";
         for (QAEngineer qaEngineer : qaEngineers) {
-            result += qaEngineer.getName() + " " + qaEngineer.getSurname() + ";  ";
+            result += qaEngineer.toString() + "\n";
         }
         return result;
+    }
+
+    public void validateSizeOfTeam(int sizeOfTeam) throws SizeOfTeamSmallException {
+
+        if (sizeOfTeam <= 3) throw new SizeOfTeamSmallException();
     }
 }

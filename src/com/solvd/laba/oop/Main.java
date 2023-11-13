@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class Main {
     public static void main(String[] args) {
-
+        //initializing the important variables
         long seed = 12345L;
         Random random = new Random(seed);
         final Application application = new Application("AStore", 2,
@@ -16,15 +16,17 @@ public class Main {
         int maxCostMouse = 150;
         int randomCostMouse = random.nextInt(maxCostMouse - minCostMouse + 1) + minCostMouse;
 
+        //instantiation of classes
         Team teamNull = new Team(null, null, null);
         Company company = new Company("Brains", teamNull, 5);
 
-        Customer customer = new Customer("Mariya", "Vasulivska", true);
+        Customer customer = new Customer("Mariya", "Vasulivska", true, application);
 
         String[] system = new String[]{"IOS", "Android"};
         Functional functional = new Functional(system, 13, true, 3);
         int tasksForEveryone = Employee.getTasksForEveryOne(functional);
 
+        //instantiation of employees
         Developer[] developers = makeDevelopers(company, functional, tasksForEveryone);
         Manager[] managers = makeManagers(company, functional, tasksForEveryone);
         QAEngineer[] qaEngineers = makeQAEngineers(company, functional, tasksForEveryone);
@@ -33,16 +35,22 @@ public class Main {
         company.setTeam(team);
         int sizeOfTeam = developers.length + managers.length + qaEngineers.length;
 
+        //instantiation of classes
+
         LapTop[] lapTops = makeLapTops(sizeOfTeam, randomCostLapTop);
         Mouse[] mouses = makeMouses(sizeOfTeam, randomCostMouse);
 
         Technicks technicks = new Technicks(lapTops, mouses);
 
+        //calculate the cost of application
         CalculatorCost calculatorCost = new CalculatorCost(customer, application, functional, team, developers,
                 managers, qaEngineers, technicks, lapTops, mouses, company);
         int cost = calculatorCost.calculateCost();
         application.setCost(cost);
-        System.out.println("The price for this appliation will be");
+
+        //printing main information
+
+        System.out.println("The price for this application will be");
         System.out.println(cost + " $");
 
 
@@ -53,6 +61,7 @@ public class Main {
         System.out.println(technicks.getInfo());
     }
 
+    //methods to creating instantiation of employees and devices
     public static Developer[] makeDevelopers(Company company, Functional functional, int tasks) {
         Developer developers[] = new Developer[company.setNumOfDevelopes(functional)];
         for (int i = 0; i < developers.length; i++) {
@@ -83,7 +92,8 @@ public class Main {
     public static LapTop[] makeLapTops(int sizeOfTeam, int randomCost) {
         LapTop[] lapTops = new LapTop[sizeOfTeam];
         for (int i = 0; i < sizeOfTeam; i++) {
-            lapTops[i] = new LapTop(randomCost, DeviceGenerator.getNextLapTopName());
+            lapTops[i] = new LapTop(randomCost, DeviceGenerator.getNextLapTopName(),
+                    DeviceGenerator.getNextLapTopScreenSize(), DeviceGenerator.getNextLapTopMemorySize());
         }
         return lapTops;
     }
@@ -91,7 +101,8 @@ public class Main {
     public static Mouse[] makeMouses(int sizeOfTeam, int randomCost) {
         Mouse[] mouses = new Mouse[sizeOfTeam];
         for (int i = 0; i < sizeOfTeam; i++) {
-            mouses[i] = new Mouse(randomCost, DeviceGenerator.getNextMouseName());
+            mouses[i] = new Mouse(randomCost, DeviceGenerator.getNextMouseName(),
+                    DeviceGenerator.getNextMouseWireless(), DeviceGenerator.getNextMouseSensor());
         }
         return mouses;
     }
