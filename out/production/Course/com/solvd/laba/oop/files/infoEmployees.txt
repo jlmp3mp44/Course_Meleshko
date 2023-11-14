@@ -1,0 +1,11 @@
+DEVELOPERS 
+Developer{ Name=John Surname=Smith Salary=3000 numOfTasks=2}
+Developer{ Name=Mary Surname=Johnson Salary=3000 numOfTasks=2}
+
+MANAGERS 
+Manager{ Name=David Surname=Brown Salary=3200 numOfDevelopers in control=2}
+Manager{ Name=Sarah Surname=Lee Salary=4000 numOfDevelopers in control=2}
+Manager{ Name=Michael Surname=Wilson Salary=3600 numOfDevelopers in control=2}
+
+QA ENGINEERS 
+QAEngineer{ Name=Emily Surname=Davis Salary=3000 numOfTasks=2}
