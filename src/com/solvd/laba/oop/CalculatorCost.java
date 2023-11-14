@@ -9,40 +9,26 @@ import java.util.Arrays;
 
 public final class CalculatorCost implements CalculatorCostInterface {
     private Customer customer;
-    private Application application;
     private Functional functional;
-    private Team team;
-    private Developer[] developers;
-    private Manager[] managers;
-    private QAEngineer[] qaEngineers;
-    private Technicks technicks;
-    private LapTop[] lapTops;
-    private Mouse[] mouses;
     private Company company;
 
 
-    public CalculatorCost(Customer customer, Application application, Functional functional, Team team,
-                          Developer[] developers, Manager[] managers, QAEngineer[] qaEngineers,
-                          Technicks technicks, LapTop[] lapTops, Mouse[] mouses, Company company) {
+    public CalculatorCost(Customer customer, Functional functional, Company company) {
         this.customer = customer;
-        this.application = application;
         this.functional = functional;
-        this.team = team;
-        this.developers = developers;
-        this.managers = managers;
-        this.qaEngineers = qaEngineers;
-        this.technicks = technicks;
-        this.lapTops = lapTops;
-        this.mouses = mouses;
         this.company = company;
     }
 
-    public Application getApplication() {
-        return application;
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public void setApplication(Application application) {
-        this.application = application;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public Application getApplication() {
+        return customer.getApplication();
     }
 
     public Functional getFunctional() {
@@ -54,59 +40,31 @@ public final class CalculatorCost implements CalculatorCostInterface {
     }
 
     public Team getTeam() {
-        return team;
-    }
-
-    public void setTeam(Team team) {
-        this.team = team;
+        return company.getTeam();
     }
 
     public Developer[] getDevelopers() {
-        return developers;
-    }
-
-    public void setDevelopers(Developer[] developers) {
-        this.developers = developers;
+        return getTeam().getDevelopers();
     }
 
     public Manager[] getManagers() {
-        return managers;
-    }
-
-    public void setManagers(Manager[] managers) {
-        this.managers = managers;
+        return getTeam().getManagers();
     }
 
     public Technicks getTechnicks() {
-        return technicks;
-    }
-
-    public void setTechnicks(Technicks technicks) {
-        this.technicks = technicks;
+        return company.getTechnicks();
     }
 
     public LapTop[] getLapTops() {
-        return lapTops;
-    }
-
-    public void setLapTops(LapTop[] lapTops) {
-        this.lapTops = lapTops;
+        return getTechnicks().getLapTops();
     }
 
     public Mouse[] getMouses() {
-        return mouses;
+        return getTechnicks().getMouses();
     }
 
-    public void setMouses(Mouse[] mouses) {
-        this.mouses = mouses;
-    }
-
-    public QAEngineer[] getQaTesters() {
-        return qaEngineers;
-    }
-
-    public void setQaTesters(QAEngineer[] qaEngineers) {
-        this.qaEngineers = qaEngineers;
+    public QAEngineer[] getQaEngineers() {
+        return getTeam().getQaEngineers();
     }
 
     public Company getCompany() {
@@ -120,9 +78,9 @@ public final class CalculatorCost implements CalculatorCostInterface {
     // Sum salary every employee
     public int calculateAllSalary() {
         int totalSalary = 0;
-        totalSalary += calculateAndValidateSalary(developers, "Developer");
-        totalSalary += calculateAndValidateSalary(managers, "Manager");
-        totalSalary += calculateAndValidateSalary(qaEngineers, "QA Engineer");
+        totalSalary += calculateAndValidateSalary(getDevelopers(), "Developer");
+        totalSalary += calculateAndValidateSalary(getManagers(), "Manager");
+        totalSalary += calculateAndValidateSalary(getQaEngineers(), "QA Engineer");
 
         return totalSalary;
     }
@@ -142,7 +100,7 @@ public final class CalculatorCost implements CalculatorCostInterface {
                 .sum();
     }
 
-    //hek the salary  meets the requirements
+    //сheck the salary  meets the requirements
     private void validateSalary(int salary) throws SalaryZeroOrLessException {
         if (salary <= 0) {
             throw new SalaryZeroOrLessException();
@@ -151,8 +109,8 @@ public final class CalculatorCost implements CalculatorCostInterface {
 
     //sum all cost devices
     public int calculateCostDevices() {
-        int costLapTops = calculateAndValidateCostDevices(lapTops, "LapTops");
-        int costMouses = calculateAndValidateCostDevices(mouses, "Mouses");
+        int costLapTops = calculateAndValidateCostDevices(getLapTops(), "LapTops");
+        int costMouses = calculateAndValidateCostDevices(getMouses(), "Mouses");
         return costLapTops + costMouses;
     }
 
@@ -180,7 +138,7 @@ public final class CalculatorCost implements CalculatorCostInterface {
     //calculate the full cost of application
     public int calculateCost() {
         int fullCost = 0;
-        int time = application.getTimeToMake();
+        int time = customer.getApplication().getTimeToMake();
         int complexity = functional.getComplexityApp();
         int system = functional.getSystem().length;
         int numOfTasks = functional.getNumberOfTasks();

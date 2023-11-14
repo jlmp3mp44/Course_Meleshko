@@ -3,6 +3,10 @@ package com.solvd.laba.oop;
 import com.solvd.laba.oop.Exceptions.SizeOfTeamSmallException;
 import com.solvd.laba.oop.Interfaces.InfoInterface;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
 public class Team implements InfoInterface {
 
     public Developer[] developers;
@@ -31,11 +35,11 @@ public class Team implements InfoInterface {
         this.managers = managers;
     }
 
-    public QAEngineer[] getQaTesters() {
+    public QAEngineer[] getQaEngineers() {
         return qaEngineers;
     }
 
-    public void setQaTesters(QAEngineer[] qaEngineers) {
+    public void setQaEngineers(QAEngineer[] qaEngineers) {
         this.qaEngineers = qaEngineers;
     }
 
@@ -51,13 +55,13 @@ public class Team implements InfoInterface {
         String result = "";
         result += "DEVELOPERS \n";
         for (Developer developer : developers) {
-            result += developer.toString() + "/n";
+            result += developer.toString() + "\n";
         }
         result += "\nMANAGERS \n";
         for (Manager manager : managers) {
             result += manager.toString() + "\n";
         }
-        result += "\nQA ENGINEER \n";
+        result += "\nQA ENGINEERS \n";
         for (QAEngineer qaEngineer : qaEngineers) {
             result += qaEngineer.toString() + "\n";
         }
@@ -67,5 +71,18 @@ public class Team implements InfoInterface {
     public void validateSizeOfTeam(int sizeOfTeam) throws SizeOfTeamSmallException {
 
         if (sizeOfTeam <= 3) throw new SizeOfTeamSmallException();
+    }
+
+    public void writeInfoToTheFile() {
+        try (FileOutputStream allEmployees = new FileOutputStream("D:\\Course_testimg\\Course\\src\\com\\" +
+                "solvd\\laba\\oop\\files\\infoEmployees.txt")) {
+            byte[] buffer = getInfo().getBytes();
+            allEmployees.write(buffer);
+        } catch (FileNotFoundException e) {
+            System.out.println("File with employees didn`t find");
+            System.exit(1);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

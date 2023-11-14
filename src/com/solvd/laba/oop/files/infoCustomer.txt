@@ -1,0 +1,5 @@
+Customer{Name='Mariya
+ Surname='Vasulivska
+ RegularCustomer=true
+ Application=com.solvd.laba.oop.Application@69d0a921
+}

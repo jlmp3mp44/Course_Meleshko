@@ -1,0 +1,15 @@
+LapTops 
+LapTop{ Name=Lenovo Cost=200 ScreenSize=14.0 MemorySize=8}
+LapTop{ Name=Apple Cost=300 ScreenSize=15.6 MemorySize=16}
+LapTop{ Name=Samsung Cost=200 ScreenSize=13.0 MemorySize=32}
+LapTop{ Name=Asus Cost=400 ScreenSize=14.5 MemorySize=32}
+LapTop{ Name=Lenovo Cost=400 ScreenSize=13.5 MemorySize=16}
+LapTop{ Name=Lenovo Cost=600 ScreenSize=12.5 MemorySize=16}
+
+Mouses 
+Mouse{ Name=Lenovo Cost=100 Is Wireless?=true Has Sensor?=true}
+Mouse{ Name=Apple Cost=50 Is Wireless?=true Has Sensor?=true}
+Mouse{ Name=Samsung Cost=60 Is Wireless?=false Has Sensor?=true}
+Mouse{ Name=Asus Cost=70 Is Wireless?=true Has Sensor?=false}
+Mouse{ Name=Lenovo Cost=50 Is Wireless?=true Has Sensor?=false}
+Mouse{ Name=Lenovo Cost=65 Is Wireless?=false Has Sensor?=false}
