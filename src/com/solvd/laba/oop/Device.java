@@ -1,6 +1,9 @@
 package com.solvd.laba.oop;
 
-abstract class Device {
+import com.solvd.laba.oop.Interfaces.CostableInterface;
+import com.solvd.laba.oop.Interfaces.NameableInterface;
+
+abstract class Device implements NameableInterface, CostableInterface {
     protected int cost;
     protected String name;
 
@@ -9,6 +12,7 @@ abstract class Device {
         this.name = name;
     }
 
+    @Override
     public int getCost() {
         return cost;
     }
@@ -17,6 +21,7 @@ abstract class Device {
         this.cost = cost;
     }
 
+    @Override
     public String getName() {
         return name;
     }

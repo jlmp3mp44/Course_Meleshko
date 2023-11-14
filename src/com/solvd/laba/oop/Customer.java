@@ -1,40 +1,32 @@
 package com.solvd.laba.oop;
 
-public class Customer {
-    private String name;
-    private String surname;
-    private String age;
+import com.solvd.laba.oop.Interfaces.FullNameableInterface;
+
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+public final class Customer implements FullNameableInterface {
+    private final String NAME;
+    private final String surname;
     private boolean regularCustomer;
+    private Application application;
 
-    public Customer(String name, String surname, String age, boolean regularCustomer) {
-        this.name = name;
+    public Customer(String name, String surname, boolean regularCustomer, Application application) {
+        this.NAME = name;
         this.surname = surname;
-        this.age = age;
         this.regularCustomer = regularCustomer;
+        this.application = application;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
-    public void setAge(String age) {
-        this.age = age;
-    }
-
+    @Override
     public String getName() {
-        return name;
+        return NAME;
     }
 
+    @Override
     public String getSurname() {
         return surname;
-    }
-
-    public String getAge() {
-        return age;
     }
 
     public boolean isRegularCustomer() {
@@ -43,5 +35,36 @@ public class Customer {
 
     public void setRegularCustomer(boolean regularCustomer) {
         this.regularCustomer = regularCustomer;
+    }
+
+    public Application getApplication() {
+        return application;
+    }
+
+    public void setApplication(Application application) {
+        this.application = application;
+    }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "Name='" + NAME + '\n' +
+                " Surname='" + surname + '\n' +
+                " RegularCustomer=" + regularCustomer + '\n' +
+                " Application=" + application + '\n' +
+                '}';
+    }
+
+    public void writeInfoToTheFile() {
+        try (FileOutputStream customer = new FileOutputStream("D:\\Course_testimg\\Course\\src\\com\\" +
+                "solvd\\laba\\oop\\files\\infoCustomer.txt")) {
+            byte[] buffer = toString().getBytes();
+            customer.write(buffer);
+        } catch (FileNotFoundException e) {
+            System.out.println("File with customer didn`t find");
+            System.exit(1);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

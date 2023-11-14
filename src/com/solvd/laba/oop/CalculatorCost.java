@@ -1,43 +1,34 @@
 package com.solvd.laba.oop;
 
+import com.solvd.laba.oop.Exceptions.CostApplicationExpensiveException;
+import com.solvd.laba.oop.Exceptions.PriceDeviceZeroOrLessException;
+import com.solvd.laba.oop.Exceptions.SalaryZeroOrLessException;
+import com.solvd.laba.oop.Interfaces.CalculatorCostInterface;
+
 import java.util.Arrays;
 
-public class CalculatorCost {
+public final class CalculatorCost implements CalculatorCostInterface {
     private Customer customer;
-    private Application application;
     private Functional functional;
-    private Team team;
-    private Developer[] developers;
-    private Manager[] managers;
-    private QAEngineer[] qaEngineers;
-    private Technicks technicks;
-    private LapTop[] lapTops;
-    private Mouse[] mouses;
     private Company company;
 
 
-    public CalculatorCost(Customer customer, Application application, Functional functional, Team team,
-                          Developer[] developers, Manager[] managers, QAEngineer[] qaEngineers,
-                          Technicks technicks, LapTop[] lapTops, Mouse[] mouses, Company company) {
+    public CalculatorCost(Customer customer, Functional functional, Company company) {
         this.customer = customer;
-        this.application = application;
         this.functional = functional;
-        this.team = team;
-        this.developers = developers;
-        this.managers = managers;
-        this.qaEngineers = qaEngineers;
-        this.technicks = technicks;
-        this.lapTops = lapTops;
-        this.mouses = mouses;
         this.company = company;
     }
 
-    public Application getApplication() {
-        return application;
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public void setApplication(Application application) {
-        this.application = application;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public Application getApplication() {
+        return customer.getApplication();
     }
 
     public Functional getFunctional() {
@@ -49,59 +40,31 @@ public class CalculatorCost {
     }
 
     public Team getTeam() {
-        return team;
-    }
-
-    public void setTeam(Team team) {
-        this.team = team;
+        return company.getTeam();
     }
 
     public Developer[] getDevelopers() {
-        return developers;
-    }
-
-    public void setDevelopers(Developer[] developers) {
-        this.developers = developers;
+        return getTeam().getDevelopers();
     }
 
     public Manager[] getManagers() {
-        return managers;
-    }
-
-    public void setManagers(Manager[] managers) {
-        this.managers = managers;
+        return getTeam().getManagers();
     }
 
     public Technicks getTechnicks() {
-        return technicks;
-    }
-
-    public void setTechnicks(Technicks technicks) {
-        this.technicks = technicks;
+        return company.getTechnicks();
     }
 
     public LapTop[] getLapTops() {
-        return lapTops;
-    }
-
-    public void setLapTops(LapTop[] lapTops) {
-        this.lapTops = lapTops;
+        return getTechnicks().getLapTops();
     }
 
     public Mouse[] getMouses() {
-        return mouses;
+        return getTechnicks().getMouses();
     }
 
-    public void setMouses(Mouse[] mouses) {
-        this.mouses = mouses;
-    }
-
-    public QAEngineer[] getQaTesters() {
-        return qaEngineers;
-    }
-
-    public void setQaTesters(QAEngineer[] qaEngineers) {
-        this.qaEngineers = qaEngineers;
+    public QAEngineer[] getQaEngineers() {
+        return getTeam().getQaEngineers();
     }
 
     public Company getCompany() {
@@ -112,31 +75,70 @@ public class CalculatorCost {
         this.company = company;
     }
 
+    // Sum salary every employee
     public int calculateAllSalary() {
-        int salaryDevelop = Arrays.stream(developers)
-                .mapToInt(Developer::getFullSalary)
-                .sum();
-        int salaryManager = Arrays.stream(managers)
-                .mapToInt(Manager::getFullSalary)
-                .sum();
-        int salaryQATester = Arrays.stream(qaEngineers)
-                .mapToInt(QAEngineer::getFullSalary)
-                .sum();
-        return salaryDevelop + salaryManager + salaryQATester;
+        int totalSalary = 0;
+        totalSalary += calculateAndValidateSalary(getDevelopers(), "Developer");
+        totalSalary += calculateAndValidateSalary(getManagers(), "Manager");
+        totalSalary += calculateAndValidateSalary(getQaEngineers(), "QA Engineer");
+
+        return totalSalary;
     }
 
+    private int calculateAndValidateSalary(Employee[] employees, String category) {
+        return Arrays.stream(employees)
+                .mapToInt(employee -> {
+                    try {
+                        validateSalary(employee.getFullSalary());
+                    } catch (SalaryZeroOrLessException e) {
+                        System.out.println("The salary one of " + category + " = null");
+                        System.out.println("CHANGE THE SALARY");
+                        System.exit(1);
+                    }
+                    return employee.getFullSalary();
+                })
+                .sum();
+    }
+
+    //сheck the salary  meets the requirements
+    private void validateSalary(int salary) throws SalaryZeroOrLessException {
+        if (salary <= 0) {
+            throw new SalaryZeroOrLessException();
+        }
+    }
+
+    //sum all cost devices
     public int calculateCostDevices() {
-        int costLapTop = Arrays.stream(lapTops)
-                .mapToInt(LapTop::getCost)
-                .sum();
-        int costMouses = Arrays.stream(mouses)
-                .mapToInt(Mouse::getCost)
-                .sum();
-        return costLapTop + costMouses;
+        int costLapTops = calculateAndValidateCostDevices(getLapTops(), "LapTops");
+        int costMouses = calculateAndValidateCostDevices(getMouses(), "Mouses");
+        return costLapTops + costMouses;
     }
 
+    public int calculateAndValidateCostDevices(Device[] devices, String category) {
+        int costDevice = Arrays.stream(devices)
+                .mapToInt(device -> {
+                    try {
+                        validatePriceDevice(device.getCost());
+                    } catch (PriceDeviceZeroOrLessException e) {
+                        System.out.println("The price one of the  " + category + " is null");
+                        System.out.println("CHANGE THE PRICE OF " + category);
+                        System.exit(1);
+                    }
+                    return device.getCost();
+                })
+                .sum();
+        return costDevice;
+    }
+
+    //check the cost of devices meets the requirements
+    public void validatePriceDevice(int price) throws PriceDeviceZeroOrLessException {
+        if (price <= 0) throw new PriceDeviceZeroOrLessException();
+    }
+
+    //calculate the full cost of application
     public int calculateCost() {
-        int time = application.getTimeToMake();
+        int fullCost = 0;
+        int time = customer.getApplication().getTimeToMake();
         int complexity = functional.getComplexityApp();
         int system = functional.getSystem().length;
         int numOfTasks = functional.getNumberOfTasks();
@@ -151,8 +153,19 @@ public class CalculatorCost {
         double costWithoutPercantage = (fullSalary + fullCostDevices) / 2 + (complexity * time) +
                 (system * complexity) + (numOfTasks * mediaContent);
         double costWithDiscount = costWithoutPercantage - costWithoutPercantage * discount / 100;
-        double fullCost = costWithDiscount + costWithDiscount * perantageCompany / 100;
-
-        return (int) fullCost;
+        try {
+            fullCost = (int) (costWithDiscount + costWithDiscount * perantageCompany / 100);
+            validateCostApplication(fullCost);
+        } catch (CostApplicationExpensiveException e) {
+            System.out.println("The cost application very expensive, Customer refused the purchase");
+            System.exit(1);
+        }
+        return fullCost;
     }
+
+    //check the application cost meets the requirements
+    public void validateCostApplication(int cost) throws CostApplicationExpensiveException {
+        if (cost > 15000) throw new CostApplicationExpensiveException();
+    }
+
 }

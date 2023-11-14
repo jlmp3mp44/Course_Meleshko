@@ -1,16 +1,21 @@
 package com.solvd.laba.oop;
 
-public class Company {
+import com.solvd.laba.oop.Interfaces.NameableInterface;
+
+public final class Company implements NameableInterface {
     private String name;
     private Team team;
     private double percentageOfAmount;
+    private Technicks technicks;
 
-    public Company(String name, Team team, double percentageOfAmount) {
+    public Company(String name, Team team, double percentageOfAmount, Technicks technicks) {
         this.name = name;
         this.team = team;
         this.percentageOfAmount = percentageOfAmount;
+        this.technicks = technicks;
     }
 
+    @Override
     public String getName() {
         return name;
     }
@@ -18,6 +23,7 @@ public class Company {
     public void setName(String name) {
         this.name = name;
     }
+
 
     public Team getTeam() {
         return team;
@@ -35,18 +41,27 @@ public class Company {
         this.percentageOfAmount = percentageOfAmount;
     }
 
-    public int setNumOfDevelopes(Functional functional) {
+    public Technicks getTechnicks() {
+        return technicks;
+    }
+
+    public void setTechnicks(Technicks technicks) {
+        this.technicks = technicks;
+    }
+
+    //set the number of employees depends on tasks in application
+    public static int setNumOfDevelopes(Functional functional) {
         int numOfTasks = functional.getNumberOfTasks();
         int numOfDevelopers = numOfTasks / 5;
         return numOfDevelopers;
     }
 
-    public int setNumOfManagers(Functional functional) {
+    public static int setNumOfManagers(Functional functional) {
         int numOfManagers = functional.getComplexityApp();
         return numOfManagers;
     }
 
-    public int setNumOfQA(Functional functional) {
+    public static int setNumOfQA(Functional functional) {
         int numOfQA = setNumOfDevelopes(functional) / 2;
         return numOfQA;
     }

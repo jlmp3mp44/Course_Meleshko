@@ -1,43 +1,48 @@
 package com.solvd.laba.oop;
 
-abstract class Employee {
+import com.solvd.laba.oop.Exceptions.NumOfTasksZeroOrLessException;
+import com.solvd.laba.oop.Interfaces.FullNameableInterface;
+
+abstract class Employee implements FullNameableInterface {
     protected static int tasksForEveryOne;
-    private String name;
-    private String surname;
-    protected static int baseSalary = 1000;
+    private final String name;
+    private final String surname;
+    protected static final int BASE_SALARY = 1000;
 
     public Employee(String name, String surname) {
         this.name = name;
         this.surname = surname;
     }
 
+    @Override
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
+    @Override
     public String getSurname() {
         return surname;
     }
 
-    public void setSurname(String surname) {
-        this.surname = surname;
+    public final int getBaseSalary() {
+        return BASE_SALARY;
     }
 
-    public int getBaseSalary() {
-        return baseSalary;
-    }
-
-    public void setBaseSalary(int salary) {
-        this.baseSalary = salary;
-    }
-
-    public static int getTasksForEveryOne(Functional functional) {
-        tasksForEveryOne = functional.getNumberOfTasks() / 5;
+    //distribution of tasks to workers
+    public static final int getTasksForEveryOne(Functional functional) {
+        try {
+            tasksForEveryOne = functional.getNumberOfTasks() / 5;
+            validateNumOfTasks();
+        } catch (NumOfTasksZeroOrLessException e) {
+            System.out.println("Num of tasks for every employee is incorrect: " + tasksForEveryOne);
+            System.out.println("CHANGE THE NUMBER OF TASKS");
+            System.exit(1);
+        }
         return tasksForEveryOne;
+    }
+
+    public static void validateNumOfTasks() throws NumOfTasksZeroOrLessException {
+        if (tasksForEveryOne <= 0) throw new NumOfTasksZeroOrLessException();
     }
 
     protected abstract int getFullSalary();

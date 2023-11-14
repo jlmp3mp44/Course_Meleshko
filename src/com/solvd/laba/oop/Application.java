@@ -1,40 +1,46 @@
 package com.solvd.laba.oop;
 
-public class Application {
+import com.solvd.laba.oop.Interfaces.CostableInterface;
+import com.solvd.laba.oop.Interfaces.NameableInterface;
 
-    private String nameApplication;
-    private int timeToMake; ////////in month
-    private String decription;
-    ///////////from 1 to 5
+public class Application implements NameableInterface, CostableInterface {
 
-    public Application(String nameApplication, int timeToMake, String decription) {
-        this.nameApplication = nameApplication;
-        this.timeToMake = timeToMake;
-        this.decription = decription;
+    private final String NAME;
+    private final int TIME_TO_MAKE;
+    private final String DESCRIPTION;/////in months
+    private int cost;
+
+    public Application(String NAME, int TIME_TO_MAKE, String DESCRIPTION, int cost) {
+        this.NAME = NAME;
+        this.TIME_TO_MAKE = TIME_TO_MAKE;
+        this.DESCRIPTION = DESCRIPTION;
+        this.cost = cost;
     }
 
-    public String getNameApplication() {
-        return nameApplication;
+    @Override
+    public String getName() {
+        return NAME;
     }
 
-    public void setNameApplication(String nameApplication) {
-        this.nameApplication = nameApplication;
-    }
 
     public int getTimeToMake() {
-        return timeToMake;
+        return TIME_TO_MAKE;
     }
 
-    public void setTimeToMake(int timeToMake) {
-        this.timeToMake = timeToMake;
-    }
 
     public String getDecription() {
-        return decription;
+        return DESCRIPTION;
     }
 
-    public void setDecription(String decription) {
-        this.decription = decription;
+
+    @Override
+    public int getCost() {
+        return cost;
     }
+
+    public void setCost(int cost) {
+        this.cost = cost;
+    }
+
 
 }

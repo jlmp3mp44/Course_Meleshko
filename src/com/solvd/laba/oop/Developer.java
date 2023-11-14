@@ -3,7 +3,7 @@ package com.solvd.laba.oop;
 import java.util.Objects;
 
 public class Developer extends Employee {
-    private String level;
+    private final String level;
     private int numOfTasks;
     private int levelInt;
 
@@ -33,9 +33,6 @@ public class Developer extends Employee {
         return levelInt;
     }
 
-    public void setLevel(String level) {
-        this.level = level;
-    }
 
     @Override
     public int getFullSalary() {

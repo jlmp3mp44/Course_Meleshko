@@ -1,8 +1,7 @@
 package com.solvd.laba.oop;
 
-import java.util.logging.Level;
-
 public class EmployeeGenerator {
+
     static int nameIndex = 0;
     static int surnameIndex = 0;
     static int levelIndex = 0;
@@ -20,6 +19,7 @@ public class EmployeeGenerator {
             "Jun", "Middle", "Jun", "Senior", "Middle", "Jun", "Senior", "Middle"};
     protected static int[] experiences = new int[]{1, 5, 3, 4, 2, 5, 4, 2, 6, 3, 5, 6, 2};
 
+    //methods to iterate the properties of employees
     public static String getNextName() {
         Names[] names = Names.values();
         Names nextName = names[nameIndex];
