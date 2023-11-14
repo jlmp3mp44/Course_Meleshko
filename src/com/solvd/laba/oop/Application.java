@@ -6,13 +6,13 @@ import com.solvd.laba.oop.Interfaces.NameableInterface;
 public class Application implements NameableInterface, CostableInterface {
 
     private final String NAME;
-    private final int TIMETOMAKE;
+    private final int TIME_TO_MAKE;
     private final String DESCRIPTION;/////in months
     private int cost;
 
-    public Application(String NAME, int TIMETOMAKE, String DESCRIPTION, int cost) {
+    public Application(String NAME, int TIME_TO_MAKE, String DESCRIPTION, int cost) {
         this.NAME = NAME;
-        this.TIMETOMAKE = TIMETOMAKE;
+        this.TIME_TO_MAKE = TIME_TO_MAKE;
         this.DESCRIPTION = DESCRIPTION;
         this.cost = cost;
     }
@@ -24,7 +24,7 @@ public class Application implements NameableInterface, CostableInterface {
 
 
     public int getTimeToMake() {
-        return TIMETOMAKE;
+        return TIME_TO_MAKE;
     }
 
 

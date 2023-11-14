@@ -1,9 +1,30 @@
 package com.solvd.laba.oop;
 
+import java.util.Random;
+
 public class Main {
+    static int randomCostLapTop;
+    static long seed;
+    static Random random;
+    static int minCostLapTop;
+    static int maxCostLapTop;
+
+    static int minCostMouse;
+    static int maxCostMouse;
+    static int randomCostMouse;
+
+    static {
+        seed = 12345L;
+        random = new Random(seed);
+        minCostLapTop = 400;
+        maxCostLapTop = 1200;
+        minCostMouse = 50;
+        maxCostMouse = 150;
+    }
+
     public static void main(String[] args) {
         //initializing the important variables
-        long seed = 12345L;
+
         final Application application = new Application("AStore", 2,
                 "Appliation - online store with custom clothes", 0);
         //instantiation of classes
@@ -79,7 +100,8 @@ public class Main {
     public static LapTop[] makeLapTops(int sizeOfTeam) {
         LapTop[] lapTops = new LapTop[sizeOfTeam];
         for (int i = 0; i < sizeOfTeam; i++) {
-            lapTops[i] = new LapTop(DeviceGenerator.getNextLapTopCost(), DeviceGenerator.getNextLapTopName(),
+            randomCostLapTop = random.nextInt(maxCostLapTop - minCostLapTop + 1) + minCostLapTop;
+            lapTops[i] = new LapTop(randomCostLapTop, DeviceGenerator.getNextLapTopName(),
                     DeviceGenerator.getNextLapTopScreenSize(), DeviceGenerator.getNextLapTopMemorySize());
         }
         return lapTops;
@@ -88,7 +110,8 @@ public class Main {
     public static Mouse[] makeMouses(int sizeOfTeam) {
         Mouse[] mouses = new Mouse[sizeOfTeam];
         for (int i = 0; i < sizeOfTeam; i++) {
-            mouses[i] = new Mouse(DeviceGenerator.getNextMouseCost(), DeviceGenerator.getNextMouseName(),
+            randomCostMouse = random.nextInt(maxCostMouse - minCostMouse + 1) + minCostMouse;
+            mouses[i] = new Mouse(randomCostMouse, DeviceGenerator.getNextMouseName(),
                     DeviceGenerator.getNextMouseWireless(), DeviceGenerator.getNextMouseSensor());
         }
         return mouses;
