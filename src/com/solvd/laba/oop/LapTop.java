@@ -6,7 +6,7 @@ class LapTop extends Device {
     private final double screenSize;
     private final int memorySize;
 
-    LapTop(int cost, String name, double screenSize, int memorySize) {
+    public LapTop(int cost, String name, double screenSize, int memorySize) {
         super(cost, name);
         this.screenSize = screenSize;
         this.memorySize = memorySize;

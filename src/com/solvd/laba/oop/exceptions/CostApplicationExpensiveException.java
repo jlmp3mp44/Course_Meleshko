@@ -1,4 +1,4 @@
-package com.solvd.laba.oop.Exceptions;
+package com.solvd.laba.oop.exceptions;
 
 public class CostApplicationExpensiveException extends Exception{
     public CostApplicationExpensiveException(){};

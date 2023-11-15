@@ -1,6 +1,6 @@
 package com.solvd.laba.oop;
 
-import com.solvd.laba.oop.Interfaces.InfoInterface;
+import com.solvd.laba.oop.interfaces.InfoInterface;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;

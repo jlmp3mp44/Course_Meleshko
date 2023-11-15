@@ -1,4 +1,4 @@
-package com.solvd.laba.oop.Interfaces;
+package com.solvd.laba.oop.interfaces;
 
 
 public interface CalculatorCostInterface {

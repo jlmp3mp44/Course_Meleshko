@@ -1,4 +1,4 @@
-package com.solvd.laba.oop.Exceptions;
+package com.solvd.laba.oop.exceptions;
 
 public class NumOfTasksZeroOrLessException extends Exception{
     public NumOfTasksZeroOrLessException(){};

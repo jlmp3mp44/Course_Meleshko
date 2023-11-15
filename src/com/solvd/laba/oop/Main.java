@@ -1,8 +1,12 @@
 package com.solvd.laba.oop;
 
 import java.util.Random;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 
 public class Main {
+
     static int randomCostLapTop;
     static long seed;
     static Random random;
@@ -23,13 +27,13 @@ public class Main {
     }
 
     public static void main(String[] args) {
+
         //initializing the important variables
 
         final Application application = new Application("AStore", 2,
                 "Appliation - online store with custom clothes", 0);
         //instantiation of classes
         Customer customer = new Customer("Mariya", "Vasulivska", true, application);
-
         String[] system = new String[]{"IOS", "Android"};
         Functional functional = new Functional(system, 13, true, 3);
         int numOfTasks = functional.getNumberOfTasks();

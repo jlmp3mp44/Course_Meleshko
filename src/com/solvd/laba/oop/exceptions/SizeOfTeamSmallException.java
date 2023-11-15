@@ -1,4 +1,4 @@
-package com.solvd.laba.oop.Exceptions;
+package com.solvd.laba.oop.exceptions;
 
 public class SizeOfTeamSmallException extends Exception{
     public SizeOfTeamSmallException(){};

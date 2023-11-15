@@ -1,7 +1,7 @@
 package com.solvd.laba.oop;
 
-import com.solvd.laba.oop.Exceptions.NumOfTasksZeroOrLessException;
-import com.solvd.laba.oop.Interfaces.FullNameableInterface;
+import com.solvd.laba.oop.exceptions.NumOfTasksZeroOrLessException;
+import com.solvd.laba.oop.interfaces.FullNameableInterface;
 
 abstract class Employee implements FullNameableInterface {
     protected static int tasksForEveryOne;

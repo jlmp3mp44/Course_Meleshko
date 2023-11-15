@@ -1,7 +1,7 @@
 package com.solvd.laba.oop;
 
-import com.solvd.laba.oop.Exceptions.SizeOfTeamSmallException;
-import com.solvd.laba.oop.Interfaces.InfoInterface;
+import com.solvd.laba.oop.exceptions.SizeOfTeamSmallException;
+import com.solvd.laba.oop.interfaces.InfoInterface;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -9,9 +9,9 @@ import java.io.IOException;
 
 public class Team implements InfoInterface {
 
-    public Developer[] developers;
-    public Manager[] managers;
-    public QAEngineer[] qaEngineers;
+    private Developer[] developers;
+    private Manager[] managers;
+    private QAEngineer[] qaEngineers;
 
     public Team(Developer[] developers, Manager[] managers, QAEngineer[] qaEngineers) {
         this.developers = developers;
