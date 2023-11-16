@@ -1,12 +1,17 @@
 package com.solvd.laba.oop;
 
 import com.solvd.laba.oop.interfaces.FullNameableInterface;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
 public final class Customer implements FullNameableInterface {
+
+    private static final Logger LOGGER = LogManager.getLogger(Customer.class);
+
     private final String name;
     private final String surname;
     private boolean regularCustomer;
@@ -61,7 +66,7 @@ public final class Customer implements FullNameableInterface {
             byte[] buffer = toString().getBytes();
             customer.write(buffer);
         } catch (FileNotFoundException e) {
-            System.out.println("File with customer didn`t find");
+            LOGGER.error(e.getMessage());
             System.exit(1);
         } catch (IOException e) {
             throw new RuntimeException(e);

@@ -2,11 +2,11 @@ package com.solvd.laba.oop;
 
 import java.util.Objects;
 
-class Mouse extends Device {
+public class Mouse extends Device {
     private final boolean wireless;
     private final boolean hasSensor;
 
-    Mouse(int cost, String name, boolean wireless, boolean hasSensor) {
+    public Mouse(int cost, String name, boolean wireless, boolean hasSensor) {
         super(cost, name);
         this.wireless = wireless;
         this.hasSensor = hasSensor;

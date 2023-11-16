@@ -1,5 +1,5 @@
 Customer{Name='Mariya
  Surname='Vasulivska
  RegularCustomer=true
- Application=com.solvd.laba.oop.Application@587e5365
+ Application=com.solvd.laba.oop.Application@d9345cd
 }

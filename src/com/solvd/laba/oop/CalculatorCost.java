@@ -4,10 +4,13 @@ import com.solvd.laba.oop.exceptions.CostApplicationExpensiveException;
 import com.solvd.laba.oop.exceptions.PriceDeviceZeroOrLessException;
 import com.solvd.laba.oop.exceptions.SalaryZeroOrLessException;
 import com.solvd.laba.oop.interfaces.CalculatorCostInterface;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.Arrays;
 
 public final class CalculatorCost implements CalculatorCostInterface {
+    private static final Logger LOGGER = LogManager.getLogger(CalculatorCost.class);
     private Customer customer;
     private Functional functional;
     private Company company;
@@ -89,10 +92,10 @@ public final class CalculatorCost implements CalculatorCostInterface {
         return Arrays.stream(employees)
                 .mapToInt(employee -> {
                     try {
-                        validateSalary(employee.getFullSalary());
+                        if (employee.getFullSalary() <= 0) throw new SalaryZeroOrLessException
+                                ("The salary one of " + category + " = null");
                     } catch (SalaryZeroOrLessException e) {
-                        System.out.println("The salary one of " + category + " = null");
-                        System.out.println("CHANGE THE SALARY");
+                        LOGGER.error(e.getMessage());
                         System.exit(1);
                     }
                     return employee.getFullSalary();
@@ -100,12 +103,6 @@ public final class CalculatorCost implements CalculatorCostInterface {
                 .sum();
     }
 
-    //сheck the salary  meets the requirements
-    private void validateSalary(int salary) throws SalaryZeroOrLessException {
-        if (salary <= 0) {
-            throw new SalaryZeroOrLessException();
-        }
-    }
 
     //sum all cost devices
     public int calculateCostDevices() {
@@ -118,21 +115,16 @@ public final class CalculatorCost implements CalculatorCostInterface {
         int costDevice = Arrays.stream(devices)
                 .mapToInt(device -> {
                     try {
-                        validatePriceDevice(device.getCost());
+                        if (device.getCost() <= 0) throw new PriceDeviceZeroOrLessException
+                                ("The price one of the  " + category + " is null");
                     } catch (PriceDeviceZeroOrLessException e) {
-                        System.out.println("The price one of the  " + category + " is null");
-                        System.out.println("CHANGE THE PRICE OF " + category);
+                        LOGGER.error(e.getMessage());
                         System.exit(1);
                     }
                     return device.getCost();
                 })
                 .sum();
         return costDevice;
-    }
-
-    //check the cost of devices meets the requirements
-    public void validatePriceDevice(int price) throws PriceDeviceZeroOrLessException {
-        if (price <= 0) throw new PriceDeviceZeroOrLessException();
     }
 
     //calculate the full cost of application
@@ -144,7 +136,7 @@ public final class CalculatorCost implements CalculatorCostInterface {
         int numOfTasks = functional.getNumberOfTasks();
         int mediaContent = functional.isMediaContent() ? 2 : 0;
         int discount = customer.isRegularCustomer() ? 7 : 0;
-        double perantageCompany = company.getPercentageOfAmount();
+        double percantageCompany = company.getPercentageOfAmount();
 
         int fullSalary = calculateAllSalary();
         int fullCostDevices = calculateCostDevices();
@@ -154,18 +146,15 @@ public final class CalculatorCost implements CalculatorCostInterface {
                 (system * complexity) + (numOfTasks * mediaContent);
         double costWithDiscount = costWithoutPercantage - costWithoutPercantage * discount / 100;
         try {
-            fullCost = (int) (costWithDiscount + costWithDiscount * perantageCompany / 100);
-            validateCostApplication(fullCost);
+            fullCost = (int) (costWithDiscount + costWithDiscount * percantageCompany / 100);
+            if (fullCost > 15000) throw new CostApplicationExpensiveException
+                    ("The cost application very expensive, Customer refused the purchase");
         } catch (CostApplicationExpensiveException e) {
-            System.out.println("The cost application very expensive, Customer refused the purchase");
+            LOGGER.error(e.getMessage());
             System.exit(1);
         }
         return fullCost;
     }
 
-    //check the application cost meets the requirements
-    public void validateCostApplication(int cost) throws CostApplicationExpensiveException {
-        if (cost > 15000) throw new CostApplicationExpensiveException();
-    }
 
 }
