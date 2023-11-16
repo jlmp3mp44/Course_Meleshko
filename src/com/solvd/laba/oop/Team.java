@@ -1,17 +1,19 @@
 package com.solvd.laba.oop;
 
-import com.solvd.laba.oop.Exceptions.SizeOfTeamSmallException;
-import com.solvd.laba.oop.Interfaces.InfoInterface;
+import com.solvd.laba.oop.exceptions.SizeOfTeamSmallException;
+import com.solvd.laba.oop.interfaces.InfoInterface;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class Team implements InfoInterface {
-
-    public Developer[] developers;
-    public Manager[] managers;
-    public QAEngineer[] qaEngineers;
+    private static final Logger LOGGER = LogManager.getLogger(Team.class);
+    private Developer[] developers;
+    private Manager[] managers;
+    private QAEngineer[] qaEngineers;
 
     public Team(Developer[] developers, Manager[] managers, QAEngineer[] qaEngineers) {
         this.developers = developers;
@@ -47,9 +49,10 @@ public class Team implements InfoInterface {
     public final String getInfo() {
         try {
             int sizeOfTeam = developers.length + managers.length + qaEngineers.length;
-            validateSizeOfTeam(sizeOfTeam);
+            if (sizeOfTeam <= 3) throw new SizeOfTeamSmallException
+                    ("Size of team very small, This project is not  convenient for the company");
         } catch (SizeOfTeamSmallException e) {
-            System.out.println("Size of team very small, This project is not  convenient for the company");
+            LOGGER.error(e.getMessage());
             System.exit(1);
         }
         String result = "";
@@ -68,10 +71,6 @@ public class Team implements InfoInterface {
         return result;
     }
 
-    public void validateSizeOfTeam(int sizeOfTeam) throws SizeOfTeamSmallException {
-
-        if (sizeOfTeam <= 3) throw new SizeOfTeamSmallException();
-    }
 
     public void writeInfoToTheFile() {
         try (FileOutputStream allEmployees = new FileOutputStream("D:\\Course_testimg\\Course\\src\\com\\" +
@@ -79,7 +78,7 @@ public class Team implements InfoInterface {
             byte[] buffer = getInfo().getBytes();
             allEmployees.write(buffer);
         } catch (FileNotFoundException e) {
-            System.out.println("File with employees didn`t find");
+            LOGGER.error(e.getMessage());
             System.exit(1);
         } catch (IOException e) {
             throw new RuntimeException(e);

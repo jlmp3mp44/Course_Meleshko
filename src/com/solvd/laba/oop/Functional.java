@@ -1,5 +1,6 @@
 package com.solvd.laba.oop;
 
+
 public class Functional {
     private String system[];
     private int numberOfTasks;

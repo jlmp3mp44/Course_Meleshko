@@ -1,12 +1,15 @@
 package com.solvd.laba.oop;
 
-import com.solvd.laba.oop.Interfaces.InfoInterface;
+import com.solvd.laba.oop.interfaces.InfoInterface;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class Technicks implements InfoInterface {
+    private static final Logger LOGGER = LogManager.getLogger(Technicks.class);
     private LapTop[] lapTops;
     private Mouse[] mouses;
 
@@ -51,7 +54,7 @@ public class Technicks implements InfoInterface {
             byte[] buffer = getInfo().getBytes();
             allTechnicks.write(buffer);
         } catch (FileNotFoundException e) {
-            System.out.println("File with technicks didn`t find");
+            LOGGER.error(e.getMessage());
             System.exit(1);
         } catch (IOException e) {
             throw new RuntimeException(e);

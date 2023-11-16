@@ -1,35 +1,35 @@
 package com.solvd.laba.oop;
 
-import com.solvd.laba.oop.Interfaces.CostableInterface;
-import com.solvd.laba.oop.Interfaces.NameableInterface;
+import com.solvd.laba.oop.interfaces.CostableInterface;
+import com.solvd.laba.oop.interfaces.NameableInterface;
 
 public class Application implements NameableInterface, CostableInterface {
 
-    private final String NAME;
-    private final int TIME_TO_MAKE;
-    private final String DESCRIPTION;/////in months
+    private final String name;
+    private final int timeToMake;//in months
+    private final String description;
     private int cost;
 
-    public Application(String NAME, int TIME_TO_MAKE, String DESCRIPTION, int cost) {
-        this.NAME = NAME;
-        this.TIME_TO_MAKE = TIME_TO_MAKE;
-        this.DESCRIPTION = DESCRIPTION;
+    public Application(String name, int timeToMake, String description, int cost) {
+        this.name = name;
+        this.timeToMake = timeToMake;
+        this.description = description;
         this.cost = cost;
     }
 
     @Override
     public String getName() {
-        return NAME;
+        return name;
     }
 
 
     public int getTimeToMake() {
-        return TIME_TO_MAKE;
+        return timeToMake;
     }
 
 
     public String getDecription() {
-        return DESCRIPTION;
+        return description;
     }
 
 

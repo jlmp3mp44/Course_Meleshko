@@ -1,8 +1,13 @@
 package com.solvd.laba.oop;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.util.Random;
 
+
 public class Main {
+
     static int randomCostLapTop;
     static long seed;
     static Random random;
@@ -13,7 +18,9 @@ public class Main {
     static int maxCostMouse;
     static int randomCostMouse;
 
+
     static {
+        System.setProperty("log4j.configurationFile", "log4j2.xml");
         seed = 12345L;
         random = new Random(seed);
         minCostLapTop = 400;
@@ -22,6 +29,8 @@ public class Main {
         maxCostMouse = 150;
     }
 
+    private static final Logger LOGGER = LogManager.getLogger(Main.class);
+
     public static void main(String[] args) {
         //initializing the important variables
 
@@ -29,7 +38,6 @@ public class Main {
                 "Appliation - online store with custom clothes", 0);
         //instantiation of classes
         Customer customer = new Customer("Mariya", "Vasulivska", true, application);
-
         String[] system = new String[]{"IOS", "Android"};
         Functional functional = new Functional(system, 13, true, 3);
         int numOfTasks = functional.getNumberOfTasks();
@@ -58,15 +66,16 @@ public class Main {
 
         //printing main information
 
-        System.out.println("The price for this application will be");
-        System.out.println(cost + " $");
-
+        LOGGER.info("PROJECT STARTS");
+        LOGGER.info("The price for this application will be");
+        LOGGER.info(cost + "$");
 
         //Write info about Employees and Technicks to the file
         team.writeInfoToTheFile();
         technicks.writeInfoToTheFile();
         //Write info about customer to the file
         customer.writeInfoToTheFile();
+        LOGGER.info("PROJECT END");
     }
 
     //methods to creating instantiation of employees and devices

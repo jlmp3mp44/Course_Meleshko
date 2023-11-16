@@ -1,9 +1,12 @@
 package com.solvd.laba.oop;
 
-import com.solvd.laba.oop.Exceptions.NumOfTasksZeroOrLessException;
-import com.solvd.laba.oop.Interfaces.FullNameableInterface;
+import com.solvd.laba.oop.exceptions.NumOfTasksZeroOrLessException;
+import com.solvd.laba.oop.interfaces.FullNameableInterface;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 abstract class Employee implements FullNameableInterface {
+    private static final Logger LOGGER = LogManager.getLogger(Employee.class);
     protected static int tasksForEveryOne;
     private final String name;
     private final String surname;
@@ -32,19 +35,17 @@ abstract class Employee implements FullNameableInterface {
     public static final int getTasksForEveryOne(Functional functional) {
         try {
             tasksForEveryOne = functional.getNumberOfTasks() / 5;
-            validateNumOfTasks();
+            if (tasksForEveryOne <= 0) throw new NumOfTasksZeroOrLessException
+                    ("Num of tasks for every employee is incorrect:" + tasksForEveryOne);
         } catch (NumOfTasksZeroOrLessException e) {
-            System.out.println("Num of tasks for every employee is incorrect: " + tasksForEveryOne);
-            System.out.println("CHANGE THE NUMBER OF TASKS");
+            LOGGER.error(e.getMessage());
             System.exit(1);
         }
         return tasksForEveryOne;
     }
 
-    public static void validateNumOfTasks() throws NumOfTasksZeroOrLessException {
-        if (tasksForEveryOne <= 0) throw new NumOfTasksZeroOrLessException();
-    }
-
     protected abstract int getFullSalary();
 }
+
+
 
