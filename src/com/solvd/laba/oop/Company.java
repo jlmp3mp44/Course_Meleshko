@@ -1,6 +1,6 @@
 package com.solvd.laba.oop;
 
-import com.solvd.laba.oop.Interfaces.NameableInterface;
+import com.solvd.laba.oop.interfaces.NameableInterface;
 
 public final class Company implements NameableInterface {
     private String name;

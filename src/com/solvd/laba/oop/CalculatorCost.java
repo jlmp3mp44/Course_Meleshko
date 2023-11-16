@@ -1,9 +1,9 @@
 package com.solvd.laba.oop;
 
-import com.solvd.laba.oop.Exceptions.CostApplicationExpensiveException;
-import com.solvd.laba.oop.Exceptions.PriceDeviceZeroOrLessException;
-import com.solvd.laba.oop.Exceptions.SalaryZeroOrLessException;
-import com.solvd.laba.oop.Interfaces.CalculatorCostInterface;
+import com.solvd.laba.oop.exceptions.CostApplicationExpensiveException;
+import com.solvd.laba.oop.exceptions.PriceDeviceZeroOrLessException;
+import com.solvd.laba.oop.exceptions.SalaryZeroOrLessException;
+import com.solvd.laba.oop.interfaces.CalculatorCostInterface;
 
 import java.util.Arrays;
 
