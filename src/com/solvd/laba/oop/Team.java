@@ -2,15 +2,19 @@ package com.solvd.laba.oop;
 
 import com.solvd.laba.oop.exceptions.SizeOfTeamSmallException;
 import com.solvd.laba.oop.interfaces.InfoInterface;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class Team implements InfoInterface {
+
     private static final Logger LOGGER = LogManager.getLogger(Team.class);
+
     private Developer[] developers;
     private Manager[] managers;
     private QAEngineer[] qaEngineers;

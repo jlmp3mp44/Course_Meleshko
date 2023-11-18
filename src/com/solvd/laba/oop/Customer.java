@@ -9,7 +9,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 public final class Customer implements FullNameableInterface {
+
     private static final Logger LOGGER = LogManager.getLogger(Customer.class);
+
     private final String name;
     private final String surname;
     private boolean regularCustomer;

@@ -1,8 +1,10 @@
 package com.solvd.laba.oop;
 
 import com.solvd.laba.oop.interfaces.InfoInterface;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
