@@ -81,50 +81,56 @@ public final class CalculatorCost implements CalculatorCostInterface {
     // Sum salary every employee
     public int calculateAllSalary() {
         int totalSalary = 0;
-        totalSalary += calculateAndValidateSalary(getDevelopers(), "Developer");
-        totalSalary += calculateAndValidateSalary(getManagers(), "Manager");
-        totalSalary += calculateAndValidateSalary(getQaEngineers(), "QA Engineer");
+        totalSalary += calculateSalary(getDevelopers(), "Developer");
+        totalSalary += calculateSalary(getManagers(), "Manager");
+        totalSalary += calculateSalary(getQaEngineers(), "QA Engineer");
 
         return totalSalary;
     }
 
-    private int calculateAndValidateSalary(Employee[] employees, String category) {
+    private int calculateSalary(Employee[] employees, String category) {
         return Arrays.stream(employees)
                 .mapToInt(employee -> {
                     try {
-                        if (employee.getFullSalary() <= 0) throw new SalaryZeroOrLessException
-                                ("The salary one of " + category + " = null");
+                        validateSalary(employee, category);
                     } catch (SalaryZeroOrLessException e) {
                         LOGGER.error(e.getMessage());
-                        System.exit(1);
                     }
                     return employee.getFullSalary();
                 })
                 .sum();
     }
 
+    public void validateSalary(Employee employee, String category) throws SalaryZeroOrLessException {
+        if (employee.getFullSalary() <= 0) throw new SalaryZeroOrLessException
+                ("The salary one of " + category + " = null");
+    }
+
 
     //sum all cost devices
     public int calculateCostDevices() {
-        int costLapTops = calculateAndValidateCostDevices(getLapTops(), "LapTops");
-        int costMouses = calculateAndValidateCostDevices(getMouses(), "Mouses");
+        int costLapTops = calculateCostDevices(getLapTops(), "LapTops");
+        int costMouses = calculateCostDevices(getMouses(), "Mouses");
         return costLapTops + costMouses;
     }
 
-    public int calculateAndValidateCostDevices(Device[] devices, String category) {
+    public int calculateCostDevices(Device[] devices, String category) {
         int costDevice = Arrays.stream(devices)
                 .mapToInt(device -> {
                     try {
-                        if (device.getCost() <= 0) throw new PriceDeviceZeroOrLessException
-                                ("The price one of the  " + category + " is null");
+                        validateCOstDevices(device, category);
                     } catch (PriceDeviceZeroOrLessException e) {
                         LOGGER.error(e.getMessage());
-                        System.exit(1);
                     }
                     return device.getCost();
                 })
                 .sum();
         return costDevice;
+    }
+
+    public void validateCOstDevices(Device device, String category) throws PriceDeviceZeroOrLessException {
+        if (device.getCost() <= 0) throw new PriceDeviceZeroOrLessException
+                ("The price one of the  " + category + " is null");
     }
 
     //calculate the full cost of application
@@ -145,15 +151,20 @@ public final class CalculatorCost implements CalculatorCostInterface {
         double costWithoutPercantage = (fullSalary + fullCostDevices) / 2 + (complexity * time) +
                 (system * complexity) + (numOfTasks * mediaContent);
         double costWithDiscount = costWithoutPercantage - costWithoutPercantage * discount / 100;
+        fullCost = (int) (costWithDiscount + costWithDiscount * percantageCompany / 100);
         try {
-            fullCost = (int) (costWithDiscount + costWithDiscount * percantageCompany / 100);
-            if (fullCost > 15000) throw new CostApplicationExpensiveException
-                    ("The cost application very expensive, Customer refused the purchase");
+            validateBudgetAndPrice(fullCost);
         } catch (CostApplicationExpensiveException e) {
             LOGGER.error(e.getMessage());
-            System.exit(1);
         }
         return fullCost;
+    }
+
+    public void validateBudgetAndPrice(int cost) throws CostApplicationExpensiveException {
+        if (customer.getBudget() < cost) {
+            throw new CostApplicationExpensiveException
+                    ("Customer hasn`t enough money for this application. Price high.");
+        }
     }
 
 

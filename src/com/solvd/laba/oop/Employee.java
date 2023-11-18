@@ -33,15 +33,18 @@ abstract class Employee implements FullNameableInterface {
 
     //distribution of tasks to workers
     public static final int getTasksForEveryOne(Functional functional) {
+        tasksForEveryOne = functional.getNumberOfTasks() / 5;
         try {
-            tasksForEveryOne = functional.getNumberOfTasks() / 5;
-            if (tasksForEveryOne <= 0) throw new NumOfTasksZeroOrLessException
-                    ("Num of tasks for every employee is incorrect:" + tasksForEveryOne);
+            validateTasksForEveryOne(tasksForEveryOne);
         } catch (NumOfTasksZeroOrLessException e) {
             LOGGER.error(e.getMessage());
-            System.exit(1);
         }
         return tasksForEveryOne;
+    }
+
+    public static void validateTasksForEveryOne(int tasksForEveryOne) throws NumOfTasksZeroOrLessException {
+        if (tasksForEveryOne <= 0) throw new NumOfTasksZeroOrLessException
+                ("Num of tasks for every employee is incorrect:" + tasksForEveryOne);
     }
 
     protected abstract int getFullSalary();

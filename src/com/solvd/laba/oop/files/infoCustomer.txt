@@ -1,5 +1,6 @@
 Customer{Name='Mariya
  Surname='Vasulivska
  RegularCustomer=true
- Application=com.solvd.laba.oop.Application@d9345cd
+ Application=com.solvd.laba.oop.Application@2d710f1a
+ Customeer`s budget= 15000
 }

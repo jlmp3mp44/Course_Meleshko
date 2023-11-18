@@ -47,13 +47,11 @@ public class Team implements InfoInterface {
 
     //get the main information about team, names and surnames of employees
     public final String getInfo() {
+        int sizeOfTeam = developers.length + managers.length + qaEngineers.length;
         try {
-            int sizeOfTeam = developers.length + managers.length + qaEngineers.length;
-            if (sizeOfTeam <= 3) throw new SizeOfTeamSmallException
-                    ("Size of team very small, This project is not  convenient for the company");
+            validateSizeOfTeam(sizeOfTeam);
         } catch (SizeOfTeamSmallException e) {
             LOGGER.error(e.getMessage());
-            System.exit(1);
         }
         String result = "";
         result += "DEVELOPERS \n";
@@ -71,6 +69,11 @@ public class Team implements InfoInterface {
         return result;
     }
 
+    public void validateSizeOfTeam(int sizeOfTeam) throws SizeOfTeamSmallException {
+        if (sizeOfTeam <= 3) throw new SizeOfTeamSmallException
+                ("Size of team very small, This project is not  convenient for the company");
+    }
+
 
     public void writeInfoToTheFile() {
         try (FileOutputStream allEmployees = new FileOutputStream("D:\\Course_testimg\\Course\\src\\com\\" +
@@ -79,7 +82,6 @@ public class Team implements InfoInterface {
             allEmployees.write(buffer);
         } catch (FileNotFoundException e) {
             LOGGER.error(e.getMessage());
-            System.exit(1);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

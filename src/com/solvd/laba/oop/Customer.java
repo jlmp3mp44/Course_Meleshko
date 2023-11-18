@@ -14,12 +14,14 @@ public final class Customer implements FullNameableInterface {
     private final String surname;
     private boolean regularCustomer;
     private Application application;
+    private final int budget;
 
-    public Customer(String name, String surname, boolean regularCustomer, Application application) {
+    public Customer(String name, String surname, boolean regularCustomer, Application application, int budget) {
         this.name = name;
         this.surname = surname;
         this.regularCustomer = regularCustomer;
         this.application = application;
+        this.budget = budget;
     }
 
     @Override
@@ -48,6 +50,10 @@ public final class Customer implements FullNameableInterface {
         this.application = application;
     }
 
+    public int getBudget() {
+        return budget;
+    }
+
     @Override
     public String toString() {
         return "Customer{" +
@@ -55,6 +61,7 @@ public final class Customer implements FullNameableInterface {
                 " Surname='" + surname + '\n' +
                 " RegularCustomer=" + regularCustomer + '\n' +
                 " Application=" + application + '\n' +
+                " Customeer`s budget= " + budget + '\n' +
                 '}';
     }
 
@@ -65,7 +72,6 @@ public final class Customer implements FullNameableInterface {
             customer.write(buffer);
         } catch (FileNotFoundException e) {
             LOGGER.error(e.getMessage());
-            System.exit(1);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
