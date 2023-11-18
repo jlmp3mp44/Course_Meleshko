@@ -57,7 +57,6 @@ public class Technicks implements InfoInterface {
             allTechnicks.write(buffer);
         } catch (FileNotFoundException e) {
             LOGGER.error(e.getMessage());
-            System.exit(1);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

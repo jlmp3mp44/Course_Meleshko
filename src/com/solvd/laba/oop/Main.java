@@ -41,7 +41,7 @@ public class Main {
         final Application application = new Application("AStore", 2,
                 "Appliation - online store with custom clothes", 0);
         //instantiation of classes
-        Customer customer = new Customer("Mariya", "Vasulivska", true, application);
+        Customer customer = new Customer("Mariya", "Vasulivska", true, application, 15000);
         String[] system = new String[]{"IOS", "Android"};
         Functional functional = new Functional(system, 13, true, 3);
         int numOfTasks = functional.getNumberOfTasks();
