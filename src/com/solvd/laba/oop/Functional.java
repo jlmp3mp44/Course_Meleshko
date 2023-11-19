@@ -1,6 +1,8 @@
 package com.solvd.laba.oop;
 
 
+import java.util.Arrays;
+
 public class Functional {
     private String system[];
     private int numberOfTasks;
@@ -44,5 +46,15 @@ public class Functional {
 
     public void setComplexityApp(int complexityApp) {
         this.complexityApp = complexityApp;
+    }
+
+    @Override
+    public String toString() {
+        return "Functional{" +
+                " system=" + Arrays.toString(system) +
+                " numberOfTasks=" + numberOfTasks +
+                " mediaContent=" + mediaContent +
+                " complexityApp=" + complexityApp +
+                '}';
     }
 }

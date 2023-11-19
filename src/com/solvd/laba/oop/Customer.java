@@ -63,7 +63,7 @@ public final class Customer implements FullNameableInterface {
                 " Surname='" + surname + '\n' +
                 " RegularCustomer=" + regularCustomer + '\n' +
                 " Application=" + application + '\n' +
-                " Customeer`s budget= " + budget + '\n' +
+                " Customer`s budget= " + budget + '\n' +
                 '}';
     }
 

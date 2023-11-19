@@ -8,16 +8,16 @@ public class EmployeeGenerator {
     static int experienceIndex = 0;
 
     protected enum Names {
-        John, Mary, David, Sarah, Michael, Emily, William, Emma, James, Olivia, Benjamin, Sophia, Daniel, Mia
+        John, Mary, David, Sarah, Michael, Emily, William, Emma, James, Olivia, Benjamin, Sophia, Daniel, Mia, Aleksa, Poli
     }
 
     protected enum Surnames {
-        Smith, Johnson, Brown, Lee, Wilson, Davis, Jones, Miller, Taylor, Anderson, White, Harris, Clark, Walker
+        Smith, Johnson, Brown, Lee, Wilson, Davis, Jones, Miller, Taylor, Anderson, White, Harris, Clark, Walker, Parker, Southy
     }
 
     protected static String[] levels = new String[]{"Jun", "Middle", "Jun", "Senior", "Middle",
-            "Jun", "Middle", "Jun", "Senior", "Middle", "Jun", "Senior", "Middle"};
-    protected static int[] experiences = new int[]{1, 5, 3, 4, 2, 5, 4, 2, 6, 3, 5, 6, 2};
+            "Jun", "Middle", "Jun", "Senior", "Middle", "Jun", "Senior", "Middle", "Senior", "Jun"};
+    protected static int[] experiences = new int[]{1, 5, 3, 4, 2, 5, 4, 2, 6, 3, 5, 6, 2, 5, 3};
 
     //methods to iterate the properties of employees
     public static String getNextName() {

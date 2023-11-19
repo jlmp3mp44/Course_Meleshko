@@ -7,7 +7,8 @@ import com.solvd.laba.oop.interfaces.CalculatorCostInterface;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.Arrays;
+import java.util.List;
+import java.util.Set;
 
 public final class CalculatorCost implements CalculatorCostInterface {
     private static final Logger LOGGER = LogManager.getLogger(CalculatorCost.class);
@@ -46,29 +47,29 @@ public final class CalculatorCost implements CalculatorCostInterface {
         return company.getTeam();
     }
 
-    public Developer[] getDevelopers() {
+    public Set<Developer> getDevelopers() {
         return getTeam().getDevelopers();
     }
 
-    public Manager[] getManagers() {
+    public Set<Manager> getManagers() {
         return getTeam().getManagers();
+    }
+    public Set<QAEngineer> getQaEngineers() {
+        return getTeam().getQaEngineers();
     }
 
     public Technicks getTechnicks() {
         return company.getTechnicks();
     }
 
-    public LapTop[] getLapTops() {
+    public List<LapTop> getLapTops() {
         return getTechnicks().getLapTops();
     }
 
-    public Mouse[] getMouses() {
+    public List<Mouse> getMouses() {
         return getTechnicks().getMouses();
     }
 
-    public QAEngineer[] getQaEngineers() {
-        return getTeam().getQaEngineers();
-    }
 
     public Company getCompany() {
         return company;
@@ -88,8 +89,8 @@ public final class CalculatorCost implements CalculatorCostInterface {
         return totalSalary;
     }
 
-    private int calculateSalary(Employee[] employees, String category) {
-        return Arrays.stream(employees)
+    private int calculateSalary(Set<? extends Employee> employees, String category) {
+        return employees.stream()
                 .mapToInt(employee -> {
                     try {
                         validateSalary(employee, category);
@@ -114,8 +115,8 @@ public final class CalculatorCost implements CalculatorCostInterface {
         return costLapTops + costMouses;
     }
 
-    public int calculateCostDevices(Device[] devices, String category) {
-        int costDevice = Arrays.stream(devices)
+    public int calculateCostDevices(List<? extends Device> devices, String category) {
+        int costDevice =  devices.stream()
                 .mapToInt(device -> {
                     try {
                         validateCOstDevices(device, category);
