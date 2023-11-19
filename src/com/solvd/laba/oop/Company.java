@@ -57,12 +57,12 @@ public final class Company implements NameableInterface {
     }
 
     public static int setNumOfManagers(Functional functional) {
-        int numOfManagers = functional.getComplexityApp();
+        int numOfManagers = functional.getComplexityApp()/2 + 1;
         return numOfManagers;
     }
 
     public static int setNumOfQA(Functional functional) {
-        int numOfQA = setNumOfDevelopes(functional) / 2;
+        int numOfQA = setNumOfDevelopes(functional);
         return numOfQA;
     }
 

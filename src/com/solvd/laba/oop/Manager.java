@@ -3,28 +3,28 @@ package com.solvd.laba.oop;
 import java.util.Objects;
 
 public class Manager extends Employee {
-    private int numOfDevelopers;
+    private int numOfEmployees;
     private final int experience;
 
     public Manager(String name, String surname, int numOfDevelopers, int experience) {
 
         super(name, surname);
-        this.numOfDevelopers = numOfDevelopers;
+        this.numOfEmployees = numOfDevelopers;
         this.experience = experience;
     }
 
-    public int getNumOfDevelopers() {
-        return numOfDevelopers;
+    public int getNumOfEmployees() {
+        return numOfEmployees;
     }
 
-    public void setNumOfDevelopers(int numOfDevelopers) {
-        this.numOfDevelopers = numOfDevelopers;
+    public void setNumOfEmployees(int numOfEmployees) {
+        this.numOfEmployees = numOfEmployees;
     }
 
 
     @Override
     public int getFullSalary() {
-        return getBaseSalary() + numOfDevelopers * 1000 + experience * 200;
+        return getBaseSalary() + numOfEmployees * 1000 + experience * 200;
     }
 
     @Override
@@ -32,13 +32,13 @@ public class Manager extends Employee {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Manager manager = (Manager) o;
-        return (numOfDevelopers == manager.numOfDevelopers) && (getName() == manager.getName()
+        return (numOfEmployees == manager.numOfEmployees) && (getName() == manager.getName()
                 && (getSurname() == manager.getSurname()) && (experience == manager.experience));
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(numOfDevelopers, getName(), getSurname(), experience);
+        return Objects.hash(numOfEmployees, getName(), getSurname(), experience);
     }
 
     @Override
@@ -47,7 +47,7 @@ public class Manager extends Employee {
                 " Name=" + getName() +
                 " Surname=" + getSurname() +
                 " Salary=" + getFullSalary() +
-                " numOfDevelopers in control=" + numOfDevelopers +
+                " numOfEmployees in control=" + numOfEmployees +
                 '}';
     }
 

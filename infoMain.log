@@ -1,0 +1,74 @@
+
+16:57:29.252 [main] INFO  com.solvd.laba.oop.Main - PROJECT STARTS
+16:57:29.259 [main] INFO  com.solvd.laba.oop.Main - CUSTOMER Mariya Vasulivska Budget: 20000
+16:57:29.267 [main] INFO  com.solvd.laba.oop.Main - APPLICATION Application{name='AStore' timeToMake=2 months description='Appliation - online store with custom clothes'}
+16:57:29.267 [main] INFO  com.solvd.laba.oop.Main - TEAM name Coolers
+16:57:29.274 [main] INFO  com.solvd.laba.oop.Main - Info about FUNCTIONAL of aaplication Functional{ system=[IOS, Android] numberOfTasks=15 mediaContent=true complexityApp=2}
+16:57:29.274 [main] INFO  com.solvd.laba.oop.Main - The PRICE for this application will be
+16:57:29.275 [main] INFO  com.solvd.laba.oop.Main - 19898$
+16:57:29.296 [main] INFO  com.solvd.laba.oop.Main - PROJECT END
+16:57:57.509 [main] INFO  com.solvd.laba.oop.Main - PROJECT STARTS
+16:57:57.520 [main] INFO  com.solvd.laba.oop.Main - CUSTOMER Mariya Vasulivska Budget: 15000
+16:57:57.539 [main] INFO  com.solvd.laba.oop.Main - APPLICATION Application{name='AStore' timeToMake=2 months description='Appliation - online store with custom clothes'}
+16:57:57.540 [main] INFO  com.solvd.laba.oop.Main - TEAM name Coolers
+16:57:57.557 [main] INFO  com.solvd.laba.oop.Main - Info about FUNCTIONAL of aaplication Functional{ system=[IOS, Android] numberOfTasks=8 mediaContent=true complexityApp=2}
+16:57:57.557 [main] INFO  com.solvd.laba.oop.Main - The PRICE for this application will be
+16:57:57.558 [main] INFO  com.solvd.laba.oop.Main - 6305$
+16:57:57.587 [main] INFO  com.solvd.laba.oop.Main - PROJECT END
+16:58:23.717 [main] INFO  com.solvd.laba.oop.Main - PROJECT STARTS
+16:58:23.731 [main] INFO  com.solvd.laba.oop.Main - CUSTOMER Mariya Vasulivska Budget: 15000
+16:58:23.739 [main] INFO  com.solvd.laba.oop.Main - APPLICATION Application{name='AStore' timeToMake=2 months description='Appliation - online store with custom clothes'}
+16:58:23.739 [main] INFO  com.solvd.laba.oop.Main - TEAM name Coolers
+16:58:23.748 [main] INFO  com.solvd.laba.oop.Main - Info about FUNCTIONAL of aaplication Functional{ system=[IOS, Android] numberOfTasks=8 mediaContent=true complexityApp=2}
+16:58:23.748 [main] INFO  com.solvd.laba.oop.Main - The PRICE for this application will be
+16:58:23.749 [main] INFO  com.solvd.laba.oop.Main - 6305$
+16:58:23.782 [main] INFO  com.solvd.laba.oop.Main - PROJECT END + 
+
+16:59:00.616 [main] INFO  com.solvd.laba.oop.Main - PROJECT STARTS
+16:59:00.626 [main] INFO  com.solvd.laba.oop.Main - CUSTOMER Mariya Vasulivska Budget: 15000
+16:59:00.634 [main] INFO  com.solvd.laba.oop.Main - APPLICATION Application{name='AStore' timeToMake=2 months description='Appliation - online store with custom clothes'}
+16:59:00.634 [main] INFO  com.solvd.laba.oop.Main - TEAM name Coolers
+16:59:00.643 [main] INFO  com.solvd.laba.oop.Main - Info about FUNCTIONAL of aaplication Functional{ system=[IOS, Android] numberOfTasks=8 mediaContent=true complexityApp=2}
+16:59:00.643 [main] INFO  com.solvd.laba.oop.Main - The PRICE for this application will be
+16:59:00.644 [main] INFO  com.solvd.laba.oop.Main - 6305$
+16:59:00.666 [main] INFO  com.solvd.laba.oop.Main - PROJECT END 
+16:59:00.666 [main] INFO  com.solvd.laba.oop.Main -  
+17:00:35.978 [main] INFO  com.solvd.laba.oop.Main - PROJECT STARTS
+17:00:35.987 [main] INFO  com.solvd.laba.oop.Main - CUSTOMER Mariya Vasulivska Budget: 15000
+17:00:35.992 [main] INFO  com.solvd.laba.oop.Main - APPLICATION Application{name='AStore' timeToMake=2 months description='Appliation - online store with custom clothes'}
+17:00:35.993 [main] INFO  com.solvd.laba.oop.Main - TEAM COOLERS
+17:00:36.000 [main] INFO  com.solvd.laba.oop.Main - FUNCTIONAL: Functional{ system=[IOS, Android] numberOfTasks=8 mediaContent=true complexityApp=2}
+17:00:36.000 [main] INFO  com.solvd.laba.oop.Main - The PRICE for this application will be
+17:00:36.001 [main] INFO  com.solvd.laba.oop.Main - 6305$
+17:00:36.022 [main] INFO  com.solvd.laba.oop.Main - PROJECT END 
+
+17:01:05.872 [main] INFO  com.solvd.laba.oop.Main - PROJECT STARTS
+17:01:05.884 [main] INFO  com.solvd.laba.oop.Main - CUSTOMER: Mariya Vasulivska Budget: 15000
+17:01:05.892 [main] INFO  com.solvd.laba.oop.Main - APPLICATION: Application{name='AStore' timeToMake=2 months description='Appliation - online store with custom clothes'}
+17:01:05.893 [main] INFO  com.solvd.laba.oop.Main - TEAM: COOLERS
+17:01:05.910 [main] INFO  com.solvd.laba.oop.Main - FUNCTIONAL: Functional{ system=[IOS, Android] numberOfTasks=8 mediaContent=true complexityApp=2}
+17:01:05.910 [main] INFO  com.solvd.laba.oop.Main - The PRICE for this application will be:
+17:01:05.911 [main] INFO  com.solvd.laba.oop.Main - 6305$
+17:01:05.936 [main] INFO  com.solvd.laba.oop.Main - PROJECT END 
+
+17:03:37.005 [main] INFO  com.solvd.laba.oop.Main - PROJECT STARTS
+17:03:37.013 [main] INFO  com.solvd.laba.oop.Main - CUSTOMER: Mariya Vasulivska Budget: 15000
+17:03:37.019 [main] INFO  com.solvd.laba.oop.Main - APPLICATION: Application{name='AStore' timeToMake=2 months description='Appliation - online store with custom clothes'}
+17:03:37.019 [main] INFO  com.solvd.laba.oop.Main - TEAM: COOLERS
+17:03:37.026 [main] INFO  com.solvd.laba.oop.Main - FUNCTIONAL: Functional{ system=[IOS, Android] numberOfTasks=8 mediaContent=true complexityApp=2}
+17:03:37.026 [main] INFO  com.solvd.laba.oop.Main - The PRICE for this application will be:
+17:03:37.027 [main] INFO  com.solvd.laba.oop.Main - 6305$
+17:03:37.052 [main] INFO  com.solvd.laba.oop.Main - PROJECT END 
+
+17:06:53.282 [main] INFO  com.solvd.laba.oop.Main - PROJECT STARTS
+17:06:53.295 [main] INFO  com.solvd.laba.oop.Main - CUSTOMER: Mariya Vasulivska Budget: 15000
+17:06:53.303 [main] INFO  com.solvd.laba.oop.Main - APPLICATION: Application{name='AStore' timeToMake=2 months description='Appliation - online store with custom clothes'}
+17:06:53.303 [main] INFO  com.solvd.laba.oop.Main - TEAM: COOLERS
+17:06:53.315 [main] INFO  com.solvd.laba.oop.Main - FUNCTIONAL: Functional{ system=[IOS, Android] numberOfTasks=8 mediaContent=true complexityApp=2}
+17:06:53.317 [main] INFO  com.solvd.laba.oop.Main - The PRICE for this application will be:
+17:06:53.319 [main] INFO  com.solvd.laba.oop.Main - 6305$
+17:06:53.330 [main] INFO  com.solvd.laba.oop.Main - Wrote info about Team to the file infoEmployees.txt
+17:06:53.345 [main] INFO  com.solvd.laba.oop.Main - Wrote info about technicks to the file infoTehnicks.txt
+17:06:53.354 [main] INFO  com.solvd.laba.oop.Main - Wrote info about customer to the file infoCustomer.txt
+17:06:53.354 [main] INFO  com.solvd.laba.oop.Main - PROJECT END 
+

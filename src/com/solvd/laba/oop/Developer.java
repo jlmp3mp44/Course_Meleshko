@@ -2,7 +2,7 @@ package com.solvd.laba.oop;
 
 import java.util.Objects;
 
-public class Developer extends Employee {
+public class Developer  extends Employee {
     private final String level;
     private int numOfTasks;
     private int levelInt;
@@ -62,4 +62,5 @@ public class Developer extends Employee {
                 " numOfTasks=" + numOfTasks +
                 '}';
     }
+
 }

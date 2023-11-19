@@ -10,48 +10,59 @@ import org.apache.logging.log4j.Logger;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.*;
 
 public class Team implements InfoInterface {
 
     private static final Logger LOGGER = LogManager.getLogger(Team.class);
 
-    private Developer[] developers;
-    private Manager[] managers;
-    private QAEngineer[] qaEngineers;
+    private final String nameOfTeam;
+    private Set<Developer> developers =  new TreeSet<>();
+    private Set<Manager> managers =  new TreeSet<>();
+    private Set<QAEngineer> qaEngineers =  new TreeSet<>();
 
-    public Team(Developer[] developers, Manager[] managers, QAEngineer[] qaEngineers) {
-        this.developers = developers;
-        this.managers = managers;
-        this.qaEngineers = qaEngineers;
+    public Team(Set<Developer> developers, Set<Manager> managers, Set<QAEngineer> qaEngineers, String nameOfTeam) {
+        this.developers = new TreeSet<>(developers);
+        this.managers =  new TreeSet<>(managers);
+        this.qaEngineers =  new TreeSet<>(qaEngineers);
+        this.nameOfTeam =  nameOfTeam;
     }
 
-    public Developer[] getDevelopers() {
+    public Set<Developer> getDevelopers() {
         return developers;
     }
 
-    public void setDevelopers(Developer[] developers) {
+    public void setDevelopers(TreeSet<Developer> developers) {
+
         this.developers = developers;
     }
 
-    public Manager[] getManagers() {
+    public Set<Manager> getManagers() {
         return managers;
     }
 
-    public void setManagers(Manager[] managers) {
+    public void setManagers(TreeSet<Manager> managers) {
+
         this.managers = managers;
     }
 
-    public QAEngineer[] getQaEngineers() {
+    public Set<QAEngineer> getQaEngineers() {
+
         return qaEngineers;
     }
 
-    public void setQaEngineers(QAEngineer[] qaEngineers) {
+    public void setQaEngineers(TreeSet<QAEngineer> qaEngineers)
+    {
         this.qaEngineers = qaEngineers;
+    }
+
+    public String getNameOfTeam() {
+        return nameOfTeam;
     }
 
     //get the main information about team, names and surnames of employees
     public final String getInfo() {
-        int sizeOfTeam = developers.length + managers.length + qaEngineers.length;
+        int sizeOfTeam = developers.size() + managers.size() + qaEngineers.size();
         try {
             validateSizeOfTeam(sizeOfTeam);
         } catch (SizeOfTeamSmallException e) {

@@ -9,30 +9,33 @@ import org.apache.logging.log4j.Logger;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Technicks implements InfoInterface {
     private static final Logger LOGGER = LogManager.getLogger(Technicks.class);
-    private LapTop[] lapTops;
-    private Mouse[] mouses;
+    private List<LapTop> lapTops;
+    private List<Mouse> mouses;
 
-    public Technicks(LapTop[] lapTops, Mouse[] mouses) {
+    public Technicks(List<LapTop> lapTops, List<Mouse> mouses) {
         this.lapTops = lapTops;
         this.mouses = mouses;
     }
 
-    public LapTop[] getLapTops() {
+    public List<LapTop>getLapTops() {
         return lapTops;
     }
 
-    public void setLapTops(LapTop[] lapTops) {
+    public void setLapTops(ArrayList<LapTop> lapTops)
+    {
         this.lapTops = lapTops;
     }
 
-    public Mouse[] getMouses() {
+    public List<Mouse> getMouses() {
         return mouses;
     }
 
-    public void setMouses(Mouse[] mouses) {
+    public void setMouses(ArrayList<Mouse> mouses) {
         this.mouses = mouses;
     }
 
