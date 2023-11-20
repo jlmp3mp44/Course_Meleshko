@@ -2,7 +2,6 @@ package com.solvd.laba.oop;
 
 import com.solvd.laba.oop.exceptions.NumOfTasksZeroOrLessException;
 import com.solvd.laba.oop.interfaces.FullNameableInterface;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

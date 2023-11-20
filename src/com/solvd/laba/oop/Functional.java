@@ -1,26 +1,27 @@
 package com.solvd.laba.oop;
 
 
-import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Functional {
-    private String system[];
+    private Set<String> system = new HashSet<>();
     private int numberOfTasks;
     private boolean mediaContent;
     private int complexityApp;
 
-    public Functional(String[] system, int numberOfTasks, boolean mediaContent, int complexityApp) {
+    public Functional(HashSet<String> system, int numberOfTasks, boolean mediaContent, int complexityApp) {
         this.system = system;
         this.numberOfTasks = numberOfTasks;
         this.mediaContent = mediaContent;
         this.complexityApp = complexityApp;
     }
 
-    public String[] getSystem() {
+    public Set<String> getSystem() {
         return system;
     }
 
-    public void setSystem(String[] system) {
+    public void setSystem(HashSet<String> system) {
         this.system = system;
     }
 
@@ -51,7 +52,7 @@ public class Functional {
     @Override
     public String toString() {
         return "Functional{" +
-                " system=" + Arrays.toString(system) +
+                " system=" + system.toString() +
                 " numberOfTasks=" + numberOfTasks +
                 " mediaContent=" + mediaContent +
                 " complexityApp=" + complexityApp +

@@ -72,3 +72,137 @@
 17:06:53.354 [main] INFO  com.solvd.laba.oop.Main - Wrote info about customer to the file infoCustomer.txt
 17:06:53.354 [main] INFO  com.solvd.laba.oop.Main - PROJECT END 
 
+18:07:02.301 [main] INFO  com.solvd.laba.oop.Main - PROJECT STARTS
+18:07:02.310 [main] INFO  com.solvd.laba.oop.Main - CUSTOMER: Mariya Vasulivska Budget: 15000
+18:07:02.316 [main] INFO  com.solvd.laba.oop.Main - APPLICATION: Application{name='AStore' timeToMake=2 months description='Appliation - online store with custom clothes'}
+18:07:02.316 [main] INFO  com.solvd.laba.oop.Main - TEAM: COOLERS
+18:07:02.325 [main] INFO  com.solvd.laba.oop.Main - FUNCTIONAL: Functional{ system=[IOS, Android] numberOfTasks=8 mediaContent=true complexityApp=2}
+18:07:02.325 [main] INFO  com.solvd.laba.oop.Main - The PRICE for this application will be:
+18:07:02.326 [main] INFO  com.solvd.laba.oop.Main - 6305$
+18:07:02.331 [main] INFO  com.solvd.laba.oop.Main - Wrote info about Team to the file infoEmployees.txt
+18:07:02.339 [main] INFO  com.solvd.laba.oop.Main - Wrote info about technicks to the file infoTehnicks.txt
+18:07:02.347 [main] INFO  com.solvd.laba.oop.Main - Wrote info about customer to the file infoCustomer.txt
+18:07:02.347 [main] INFO  com.solvd.laba.oop.Main - PROJECT END 
+
+18:07:17.477 [main] INFO  com.solvd.laba.oop.Main - PROJECT STARTS
+18:07:17.487 [main] INFO  com.solvd.laba.oop.Main - CUSTOMER: Mariya Vasulivska Budget: 15000
+18:07:17.493 [main] INFO  com.solvd.laba.oop.Main - APPLICATION: Application{name='AStore' timeToMake=2 months description='Appliation - online store with custom clothes'}
+18:07:17.493 [main] INFO  com.solvd.laba.oop.Main - TEAM: COOLERS
+18:07:17.502 [main] INFO  com.solvd.laba.oop.Main - FUNCTIONAL: Functional{ system=[IOS] numberOfTasks=8 mediaContent=true complexityApp=2}
+18:07:17.530 [main] INFO  com.solvd.laba.oop.Main - The PRICE for this application will be:
+18:07:17.531 [main] INFO  com.solvd.laba.oop.Main - 6303$
+18:07:17.543 [main] INFO  com.solvd.laba.oop.Main - Wrote info about Team to the file infoEmployees.txt
+18:07:17.553 [main] INFO  com.solvd.laba.oop.Main - Wrote info about technicks to the file infoTehnicks.txt
+18:07:17.562 [main] INFO  com.solvd.laba.oop.Main - Wrote info about customer to the file infoCustomer.txt
+18:07:17.562 [main] INFO  com.solvd.laba.oop.Main - PROJECT END 
+
+18:08:08.661 [main] INFO  com.solvd.laba.oop.Main - PROJECT STARTS
+18:08:08.670 [main] INFO  com.solvd.laba.oop.Main - CUSTOMER: Mariya Vasulivska Budget: 15000
+18:08:08.679 [main] INFO  com.solvd.laba.oop.Main - APPLICATION: Application{name='AStore' timeToMake=2 months description='Appliation - online store with custom clothes'}
+18:08:08.679 [main] INFO  com.solvd.laba.oop.Main - TEAM: COOLERS
+18:08:08.686 [main] INFO  com.solvd.laba.oop.Main - FUNCTIONAL: Functional{ system=[IOS] numberOfTasks=8 mediaContent=true complexityApp=2}
+18:08:08.687 [main] INFO  com.solvd.laba.oop.Main - The PRICE for this application will be:
+18:08:08.688 [main] INFO  com.solvd.laba.oop.Main - 6320$
+18:08:08.696 [main] INFO  com.solvd.laba.oop.Main - Wrote info about Team to the file infoEmployees.txt
+18:08:08.705 [main] INFO  com.solvd.laba.oop.Main - Wrote info about technicks to the file infoTehnicks.txt
+18:08:08.714 [main] INFO  com.solvd.laba.oop.Main - Wrote info about customer to the file infoCustomer.txt
+18:08:08.714 [main] INFO  com.solvd.laba.oop.Main - PROJECT END 
+
+18:08:37.617 [main] INFO  com.solvd.laba.oop.Main - PROJECT STARTS
+18:08:37.626 [main] INFO  com.solvd.laba.oop.Main - CUSTOMER: Mariya Vasulivska Budget: 15000
+18:08:37.633 [main] INFO  com.solvd.laba.oop.Main - APPLICATION: Application{name='AStore' timeToMake=2 months description='Appliation - online store with custom clothes'}
+18:08:37.633 [main] INFO  com.solvd.laba.oop.Main - TEAM: COOLERS
+18:08:37.639 [main] INFO  com.solvd.laba.oop.Main - FUNCTIONAL: Functional{ system=[IOS] numberOfTasks=8 mediaContent=true complexityApp=2}
+18:08:37.640 [main] INFO  com.solvd.laba.oop.Main - The PRICE for this application will be:
+18:08:37.640 [main] INFO  com.solvd.laba.oop.Main - 6281$
+18:08:37.646 [main] INFO  com.solvd.laba.oop.Main - Wrote info about Team to the file infoEmployees.txt
+18:08:37.654 [main] INFO  com.solvd.laba.oop.Main - Wrote info about technicks to the file infoTehnicks.txt
+18:08:37.662 [main] INFO  com.solvd.laba.oop.Main - Wrote info about customer to the file infoCustomer.txt
+18:08:37.662 [main] INFO  com.solvd.laba.oop.Main - PROJECT END 
+
+20:55:55.751 [main] INFO  com.solvd.laba.oop.Main - PROJECT STARTS
+20:55:55.761 [main] INFO  com.solvd.laba.oop.Main - CUSTOMER: Mariya Vasulivska Budget: 15000
+20:55:55.766 [main] INFO  com.solvd.laba.oop.Main - APPLICATION: Application{name='AStore' timeToMake=2 months description='Appliation - online store with custom clothes'}
+20:55:55.766 [main] INFO  com.solvd.laba.oop.Main - TEAM: COOLERS
+20:55:55.775 [main] INFO  com.solvd.laba.oop.Main - FUNCTIONAL: Functional{ system=[IOS] numberOfTasks=8 mediaContent=true complexityApp=2}
+20:55:55.775 [main] INFO  com.solvd.laba.oop.Main - The PRICE for this application will be:
+20:55:55.776 [main] INFO  com.solvd.laba.oop.Main - 6281$
+20:55:55.781 [main] INFO  com.solvd.laba.oop.Main - Wrote info about Team to the file infoEmployees.txt
+20:55:55.790 [main] INFO  com.solvd.laba.oop.Main - Wrote info about technicks to the file infoTehnicks.txt
+20:55:55.797 [main] INFO  com.solvd.laba.oop.Main - Wrote info about customer to the file infoCustomer.txt
+20:55:55.798 [main] INFO  com.solvd.laba.oop.Main - PROJECT END 
+
+20:56:14.600 [main] INFO  com.solvd.laba.oop.Main - PROJECT STARTS
+20:56:14.610 [main] INFO  com.solvd.laba.oop.Main - CUSTOMER: Mariya Vasulivska Budget: 15000
+20:56:14.618 [main] INFO  com.solvd.laba.oop.Main - APPLICATION: Application{name='AStore' timeToMake=2 months description='Appliation - online store with custom clothes'}
+20:56:14.618 [main] INFO  com.solvd.laba.oop.Main - TEAM: COOLERS
+20:56:14.625 [main] INFO  com.solvd.laba.oop.Main - FUNCTIONAL: Functional{ system=[IOS] numberOfTasks=8 mediaContent=true complexityApp=2}
+20:56:14.626 [main] INFO  com.solvd.laba.oop.Main - The PRICE for this application will be:
+20:56:14.627 [main] INFO  com.solvd.laba.oop.Main - 6281$
+20:56:14.634 [main] INFO  com.solvd.laba.oop.Main - Wrote info about Team to the file infoEmployees.txt
+20:56:14.653 [main] INFO  com.solvd.laba.oop.Main - Wrote info about technicks to the file infoTehnicks.txt
+20:56:14.662 [main] INFO  com.solvd.laba.oop.Main - Wrote info about customer to the file infoCustomer.txt
+20:56:14.662 [main] INFO  com.solvd.laba.oop.Main - PROJECT END 
+
+20:56:50.113 [main] INFO  com.solvd.laba.oop.Main - PROJECT STARTS
+20:56:50.122 [main] INFO  com.solvd.laba.oop.Main - CUSTOMER: Mariya Vasulivska Budget: 15000
+20:56:50.129 [main] INFO  com.solvd.laba.oop.Main - APPLICATION: Application{name='AStore' timeToMake=2 months description='Appliation - online store with custom clothes'}
+20:56:50.129 [main] INFO  com.solvd.laba.oop.Main - TEAM: COOLERS
+20:56:50.136 [main] INFO  com.solvd.laba.oop.Main - FUNCTIONAL: Functional{ system=[IOS] numberOfTasks=8 mediaContent=true complexityApp=2}
+20:56:50.136 [main] INFO  com.solvd.laba.oop.Main - The PRICE for this application will be:
+20:56:50.136 [main] INFO  com.solvd.laba.oop.Main - 6281$
+20:56:50.144 [main] INFO  com.solvd.laba.oop.Main - Wrote info about Team to the file infoEmployees.txt
+20:56:50.152 [main] INFO  com.solvd.laba.oop.Main - Wrote info about technicks to the file infoTehnicks.txt
+20:56:50.160 [main] INFO  com.solvd.laba.oop.Main - Wrote info about customer to the file infoCustomer.txt
+20:56:50.161 [main] INFO  com.solvd.laba.oop.Main - PROJECT END 
+
+20:57:12.405 [main] INFO  com.solvd.laba.oop.Main - PROJECT STARTS
+20:57:12.416 [main] INFO  com.solvd.laba.oop.Main - CUSTOMER: Mariya Vasulivska Budget: 15000
+20:57:12.423 [main] INFO  com.solvd.laba.oop.Main - APPLICATION: Application{name='AStore' timeToMake=2 months description='Appliation - online store with custom clothes'}
+20:57:12.423 [main] INFO  com.solvd.laba.oop.Main - TEAM: COOLERS
+20:57:12.432 [main] INFO  com.solvd.laba.oop.Main - FUNCTIONAL: Functional{ system=[IOS] numberOfTasks=8 mediaContent=true complexityApp=2}
+20:57:12.432 [main] INFO  com.solvd.laba.oop.Main - The PRICE for this application will be:
+20:57:12.433 [main] INFO  com.solvd.laba.oop.Main - 6281$
+20:57:12.440 [main] INFO  com.solvd.laba.oop.Main - Wrote info about Team to the file infoEmployees.txt
+20:57:12.456 [main] INFO  com.solvd.laba.oop.Main - Wrote info about technicks to the file infoTehnicks.txt
+20:57:12.464 [main] INFO  com.solvd.laba.oop.Main - Wrote info about customer to the file infoCustomer.txt
+20:57:12.464 [main] INFO  com.solvd.laba.oop.Main - PROJECT END 
+
+00:57:54.745 [main] INFO  com.solvd.laba.oop.Main - PROJECT STARTS
+00:57:54.755 [main] INFO  com.solvd.laba.oop.Main - CUSTOMER: Mariya Vasulivska Budget: 15000
+00:57:54.764 [main] INFO  com.solvd.laba.oop.Main - APPLICATION: Application{name='AStore' timeToMake=2 months description='Appliation - online store with custom clothes'}
+00:57:54.764 [main] INFO  com.solvd.laba.oop.Main - TEAM: COOLERS
+00:57:54.771 [main] INFO  com.solvd.laba.oop.Main - FUNCTIONAL: Functional{ system=[IOS] numberOfTasks=8 mediaContent=true complexityApp=2}
+00:57:54.772 [main] INFO  com.solvd.laba.oop.Main - The PRICE for this application will be:
+00:57:54.772 [main] INFO  com.solvd.laba.oop.Main - 6281$
+00:57:54.780 [main] INFO  com.solvd.laba.oop.Main - Wrote info about Team to the file infoEmployees.txt
+00:57:54.790 [main] INFO  com.solvd.laba.oop.Main - Wrote info about technicks to the file infoTehnicks.txt
+00:57:54.800 [main] INFO  com.solvd.laba.oop.Main - Wrote info about customer to the file infoCustomer.txt
+00:57:54.800 [main] INFO  com.solvd.laba.oop.Main - PROJECT END 
+
+13:15:22.053 [main] INFO  com.solvd.laba.oop.Main - PROJECT STARTS
+13:15:22.059 [main] INFO  com.solvd.laba.oop.Main - CUSTOMER: Mariya Vasulivska Budget: 15000
+13:15:22.066 [main] INFO  com.solvd.laba.oop.Main - APPLICATION: Application{name='AStore' timeToMake=2 months description='Appliation - online store with custom clothes'}
+13:15:22.066 [main] INFO  com.solvd.laba.oop.Main - TEAM: COOLERS
+13:15:22.074 [main] INFO  com.solvd.laba.oop.Main - FUNCTIONAL: Functional{ system=[IOS] numberOfTasks=8 mediaContent=true complexityApp=2}
+13:15:22.075 [main] INFO  com.solvd.laba.oop.Main - The PRICE for this application will be:
+13:15:22.076 [main] INFO  com.solvd.laba.oop.Main - 6281$
+13:15:22.083 [main] INFO  com.solvd.laba.oop.Main - Wrote info about Team to the file infoEmployees.txt
+13:15:22.094 [main] INFO  com.solvd.laba.oop.Main - Wrote info about technicks to the file infoTehnicks.txt
+13:15:22.095 [main] ERROR com.solvd.laba.oop.Customer - D:\Course_testimg\Course\src\com\solvd\laba\oop\files\a\infoCustomer.txt (The system cannot find the path specified)
+13:15:22.095 [main] INFO  com.solvd.laba.oop.Main - Wrote info about customer to the file infoCustomer.txt
+13:15:22.096 [main] INFO  com.solvd.laba.oop.Main - PROJECT END 
+
+13:15:47.964 [main] INFO  com.solvd.laba.oop.Main - PROJECT STARTS
+13:15:47.978 [main] INFO  com.solvd.laba.oop.Main - CUSTOMER: Mariya Vasulivska Budget: 15000
+13:15:47.985 [main] INFO  com.solvd.laba.oop.Main - APPLICATION: Application{name='AStore' timeToMake=2 months description='Appliation - online store with custom clothes'}
+13:15:47.985 [main] INFO  com.solvd.laba.oop.Main - TEAM: COOLERS
+13:15:47.996 [main] INFO  com.solvd.laba.oop.Main - FUNCTIONAL: Functional{ system=[IOS] numberOfTasks=8 mediaContent=true complexityApp=2}
+13:15:47.996 [main] INFO  com.solvd.laba.oop.Main - The PRICE for this application will be:
+13:15:47.997 [main] INFO  com.solvd.laba.oop.Main - 6281$
+13:15:48.004 [main] INFO  com.solvd.laba.oop.Main - Wrote info about Team to the file infoEmployees.txt
+13:15:48.014 [main] INFO  com.solvd.laba.oop.Main - Wrote info about technicks to the file infoTehnicks.txt
+13:15:48.015 [main] ERROR com.solvd.laba.oop.Customer - D:\Course_testimg\Course\src\com\solvd\laba\oop\files\a\infoCustomer.txt (The system cannot find the path specified)
+13:15:48.015 [main] INFO  com.solvd.laba.oop.Main - Wrote info about customer to the file infoCustomer.txt
+13:15:48.015 [main] INFO  com.solvd.laba.oop.Main - PROJECT END 
+

@@ -38,17 +38,18 @@ public class Main {
                 "Appliation - online store with custom clothes", 0);
         //instantiation of classes
         Customer customer = new Customer("Mariya", "Vasulivska", true, application, 15000);
-        String[] system = new String[]{"IOS", "Android"};
-        Functional functional = new Functional(system, 8, true, 2);
+        Set<String> system = new HashSet<>();
+        system.add("IOS");
+        Functional functional = new Functional((HashSet<String>) system, 8, true, 2);
         int tasksForEveryone = Employee.getTasksForEveryOne(functional);
 
         //instantiation of employees
         Set<Developer> developers = (Set<Developer>)
-                                makeEmployees(tasksForEveryone, Company.setNumOfDevelopes(functional),"Developer");
+                makeEmployees(tasksForEveryone, Company.setNumOfDevelopes(functional), "Developer");
         Set<Manager> managers = (Set<Manager>)
-                                makeEmployees(tasksForEveryone, Company.setNumOfManagers(functional), "Manager");
+                makeEmployees(tasksForEveryone, Company.setNumOfManagers(functional), "Manager");
         Set<QAEngineer> qaEngineers = (Set<QAEngineer>)
-                                makeEmployees(tasksForEveryone, Company.setNumOfQA(functional), "QAEngineer");
+                makeEmployees(tasksForEveryone, Company.setNumOfQA(functional), "QAEngineer");
 
         //instantiation of devices
         int sizeOfTeam = developers.size() + managers.size() + qaEngineers.size();
@@ -87,10 +88,10 @@ public class Main {
 
     //methods to creating instantiation of employees and devices
 
-    public static Set<? extends Employee> makeEmployees( int tasks, int number, String type){
-        Set<Employee> employees =  new TreeSet<>();
-        for(int i = 0; i<number; i++ ){
-            switch (type){
+    public static Set<? extends Employee> makeEmployees(int tasks, int number, String type) {
+        Set<Employee> employees = new TreeSet<>();
+        for (int i = 0; i < number; i++) {
+            switch (type) {
                 case "Developer":
                     employees.add(new Developer(EmployeeGenerator.getNextName(), EmployeeGenerator.getNextSurname(),
                             tasks, EmployeeGenerator.getNextLevel()));
@@ -108,9 +109,9 @@ public class Main {
         return employees;
     }
 
-    public static List<? extends Device> makeDevices (int sizeOfTeam, int maxCostDevice, int minCostDevice, String device){
-        List<Device> devices =  new ArrayList<>();
-        for(int i = 0 ; i<sizeOfTeam; i++) {
+    public static List<? extends Device> makeDevices(int sizeOfTeam, int maxCostDevice, int minCostDevice, String device) {
+        List<Device> devices = new ArrayList<>();
+        for (int i = 0; i < sizeOfTeam; i++) {
             randomCostDevice = random.nextInt(maxCostDevice - minCostDevice + 1) + minCostDevice;
             switch (device) {
                 case "LapTop":
