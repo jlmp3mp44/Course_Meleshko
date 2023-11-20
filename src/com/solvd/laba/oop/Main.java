@@ -3,7 +3,10 @@ package com.solvd.laba.oop;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.Random;
+import java.util.Set;
+import java.util.TreeSet;
 
 
 public class Main {
@@ -53,8 +56,8 @@ public class Main {
 
         //instantiation of devices
         int sizeOfTeam = developers.size() + managers.size() + qaEngineers.size();
-        List<LapTop> lapTops = (List<LapTop>) makeDevices(sizeOfTeam, maxCostLapTop, minCostLapTop, "LapTop");
-        List<Mouse> mouses = (List<Mouse>) makeDevices(sizeOfTeam, maxCostMouse, minCostMouse, "Mouse");
+        LinkedList<LapTop> lapTops = makeDevices(sizeOfTeam, maxCostLapTop, minCostLapTop, "LapTop");
+        LinkedList<Mouse> mouses = makeDevices(sizeOfTeam, maxCostMouse, minCostMouse, "Mouse");
 
         Technicks technicks = new Technicks(lapTops, mouses);
 
@@ -109,17 +112,17 @@ public class Main {
         return employees;
     }
 
-    public static List<? extends Device> makeDevices(int sizeOfTeam, int maxCostDevice, int minCostDevice, String device) {
-        List<Device> devices = new ArrayList<>();
+    public static <T extends Device> LinkedList<T> makeDevices(int sizeOfTeam, int maxCostDevice, int minCostDevice, String device) {
+        LinkedList<T> devices = new LinkedList<>();
         for (int i = 0; i < sizeOfTeam; i++) {
             randomCostDevice = random.nextInt(maxCostDevice - minCostDevice + 1) + minCostDevice;
             switch (device) {
                 case "LapTop":
-                    devices.add(new LapTop(randomCostDevice, DeviceGenerator.getNextDeviceName(device),
+                    devices.add((T) new LapTop(randomCostDevice, DeviceGenerator.getNextDeviceName(device),
                             DeviceGenerator.getNextLapTopScreenSize(), DeviceGenerator.getNextLapTopMemorySize()));
                     break;
                 case "Mouse":
-                    devices.add(new Mouse(randomCostDevice, DeviceGenerator.getNextDeviceName(device),
+                    devices.add((T) new Mouse(randomCostDevice, DeviceGenerator.getNextDeviceName(device),
                             DeviceGenerator.getNextMouseWireless(), DeviceGenerator.getNextMouseSensor()));
                     break;
             }

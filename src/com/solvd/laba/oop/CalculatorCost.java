@@ -7,7 +7,6 @@ import com.solvd.laba.oop.interfaces.CalculatorCostInterface;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.List;
 import java.util.Set;
 
 public final class CalculatorCost implements CalculatorCostInterface {
@@ -63,11 +62,11 @@ public final class CalculatorCost implements CalculatorCostInterface {
         return company.getTechnicks();
     }
 
-    public List<LapTop> getLapTops() {
+    public LinkedList<LapTop> getLapTops() {
         return getTechnicks().getLapTops();
     }
 
-    public List<Mouse> getMouses() {
+    public LinkedList<Mouse> getMouses() {
         return getTechnicks().getMouses();
     }
 
@@ -116,17 +115,17 @@ public final class CalculatorCost implements CalculatorCostInterface {
         return costLapTops + costMouses;
     }
 
-    public int calculateCostDevices(List<? extends Device> devices, String category) {
-        int costDevice = devices.stream()
-                .mapToInt(device -> {
-                    try {
-                        validateCOstDevices(device, category);
-                    } catch (PriceDeviceZeroOrLessException e) {
-                        LOGGER.error(e.getMessage());
-                    }
-                    return device.getCost();
-                })
-                .sum();
+    public int calculateCostDevices(LinkedList<? extends Device> devices, String category) {
+        int costDevice = 0;
+
+        for (Device device : devices) {
+            try {
+                validateCOstDevices(device, category);
+            } catch (PriceDeviceZeroOrLessException e) {
+                LOGGER.error(e.getMessage());
+            }
+            costDevice += device.getCost();
+        }
         return costDevice;
     }
 

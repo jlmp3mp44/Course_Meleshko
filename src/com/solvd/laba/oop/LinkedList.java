@@ -1,62 +1,101 @@
 package com.solvd.laba.oop;
 
-public class LinkedList <T> {
-    Node<T> head;
-    static class Node <T>{
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+
+public class LinkedList<T> implements Iterable<T> {
+    private Node<T> head;
+    int size;
+
+    public LinkedList() {
+        size = 0;
+    }
+
+    static class Node<T> {
         T data;
         Node<T> next;
-        Node(T data){
-            this.data =  data;
-            this.next =  null;
-        }
-    }
-    public  LinkedList insert (LinkedList<T> linkedList, T data){
-        Node<T> newNode = new Node<>(data);
-        newNode.next =  null;
 
-        if(linkedList.head == null){
-            linkedList.head = newNode;
+
+        Node(T data) {
+            this.data = data;
+            this.next = null;
         }
-        else {
-            Node<T> last =  linkedList.head;
-            while (last.next!=null){
-                last =  last.next;
-            }
-            last.next =  newNode;
-        }
-        return linkedList;
     }
-    public  void printList(LinkedList<T> linkedList)
-    {
-        Node<T> currNode = linkedList.head;
+
+    public LinkedList<T> add(T data) {
+        Node<T> newNode = new Node<>(data);
+        if (head == null) {
+            head = newNode;
+        } else {
+            Node<T> last = head;
+            while (last.next != null) {
+                last = last.next;
+            }
+            last.next = newNode;
+        }
+        size++;
+        return this;
+    }
+
+    public T delete(int index) {
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException("Index in LinkedList out of Bounds");
+        }
+        T removedData;
+        if (index == 0) {
+            removedData = head.data;
+            head = head.next;
+        } else {
+            Node<T> current = head;
+            Node<T> previous = null;
+            int currentIndex = 0;
+            while (currentIndex < index) {
+                previous = current;
+                current = current.next;
+                currentIndex++;
+            }
+            removedData = current.data;
+            previous.next = current.next;
+        }
+        size--;
+        return removedData;
+    }
+
+    public void printList() {
+        Node<T> currNode = head;
 
         System.out.print("LinkedList: ");
 
-        // Traverse through the LinkedList
         while (currNode != null) {
-            // Print the data at current node
             System.out.print(currNode.data + " ");
-
-            // Go to next node
             currNode = currNode.next;
         }
+        System.out.println();
     }
-    public LinkedList<T> insertByIndex(LinkedList<T> linkedList, int index, T data) {
-        Node<T> newNode = new Node<>(data);
-       newNode.next =  null;
-        if (index == 0) {
-            newNode.next = linkedList.head;
-            linkedList.head = newNode;
-            return linkedList;
+
+    public LinkedList<T> insert(int index, T data) {
+        if (index < 0) {
+            System.out.println("Index must be non-negative");
+            return this;
         }
-        Node<T> currNode = linkedList.head;
+
+        Node<T> newNode = new Node<>(data);
+        if (index == 0) {
+            newNode.next = head;
+            head = newNode;
+            return this;
+        }
+
+        Node<T> currNode = head;
         Node<T> prev = null;
         int counter = 0;
+
         while (currNode != null && counter < index) {
             prev = currNode;
             currNode = currNode.next;
             counter++;
         }
+
         if (counter == index) {
             prev.next = newNode;
             newNode.next = currNode;
@@ -64,6 +103,31 @@ public class LinkedList <T> {
             System.out.println("Index out of bounds, element not inserted");
         }
 
-        return linkedList;
+        return this;
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return new LinkedListIterator();
+    }
+
+    private class LinkedListIterator implements Iterator<T> {
+        private Node<T> current = head;
+
+        @Override
+        public boolean hasNext() {
+            return current != null;
+        }
+
+        @Override
+        public T next() {
+            if (!hasNext()) {
+                throw new NoSuchElementException();
+            }
+            T data = current.data;
+            current = current.next;
+            return data;
+        }
+
     }
 }

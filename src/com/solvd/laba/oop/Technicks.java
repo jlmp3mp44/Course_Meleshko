@@ -7,32 +7,31 @@ import org.apache.logging.log4j.Logger;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+
 
 public class Technicks implements InfoInterface {
     private static final Logger LOGGER = LogManager.getLogger(Technicks.class);
-    private List<LapTop> lapTops;
-    private List<Mouse> mouses;
+    private LinkedList<LapTop> lapTops;
+    private LinkedList<Mouse> mouses;
 
-    public Technicks(List<LapTop> lapTops, List<Mouse> mouses) {
+    public Technicks(LinkedList<LapTop> lapTops, LinkedList<Mouse> mouses) {
         this.lapTops = lapTops;
         this.mouses = mouses;
     }
 
-    public List<LapTop> getLapTops() {
+    public LinkedList<LapTop> getLapTops() {
         return lapTops;
     }
 
-    public void setLapTops(ArrayList<LapTop> lapTops) {
+    public void setLapTops(LinkedList<LapTop> lapTops) {
         this.lapTops = lapTops;
     }
 
-    public List<Mouse> getMouses() {
+    public LinkedList<Mouse> getMouses() {
         return mouses;
     }
 
-    public void setMouses(ArrayList<Mouse> mouses) {
+    public void setMouses(LinkedList<Mouse> mouses) {
         this.mouses = mouses;
     }
 
