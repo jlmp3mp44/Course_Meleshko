@@ -69,13 +69,13 @@ public final class Customer implements FullNameableInterface {
 
     public void writeInfoToTheFile() {
         try (FileOutputStream customer = new FileOutputStream("D:\\Course_testimg\\Course\\src\\com\\" +
-                "solvd\\laba\\oop\\files\\infoCustomer.txt")) {
+                "solvd\\laba\\oop\\files\\a\\infoCustomer.txt")) {
             byte[] buffer = toString().getBytes();
             customer.write(buffer);
         } catch (FileNotFoundException e) {
             LOGGER.error(e.getMessage());
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            LOGGER.error("Error occured " + e.getMessage());
         }
     }
 }

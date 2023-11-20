@@ -1,6 +1,5 @@
 package com.solvd.laba.oop;
 
-import com.solvd.laba.oop.interfaces.CostableInterface;
 import com.solvd.laba.oop.interfaces.NameableInterface;
 
 public class Application implements NameableInterface {

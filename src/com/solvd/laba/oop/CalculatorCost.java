@@ -54,6 +54,7 @@ public final class CalculatorCost implements CalculatorCostInterface {
     public Set<Manager> getManagers() {
         return getTeam().getManagers();
     }
+
     public Set<QAEngineer> getQaEngineers() {
         return getTeam().getQaEngineers();
     }
@@ -116,7 +117,7 @@ public final class CalculatorCost implements CalculatorCostInterface {
     }
 
     public int calculateCostDevices(List<? extends Device> devices, String category) {
-        int costDevice =  devices.stream()
+        int costDevice = devices.stream()
                 .mapToInt(device -> {
                     try {
                         validateCOstDevices(device, category);
@@ -139,7 +140,7 @@ public final class CalculatorCost implements CalculatorCostInterface {
         int fullCost = 0;
         int time = customer.getApplication().getTimeToMake();
         int complexity = functional.getComplexityApp();
-        int system = functional.getSystem().length;
+        int system = functional.getSystem().size();
         int numOfTasks = functional.getNumberOfTasks();
         int mediaContent = functional.isMediaContent() ? 2 : 0;
         int discount = customer.isRegularCustomer() ? 7 : 0;
@@ -149,8 +150,8 @@ public final class CalculatorCost implements CalculatorCostInterface {
         int fullCostDevices = calculateCostDevices();
 
 
-        double costWithoutPercantage = (fullSalary + fullCostDevices) / 2 + (complexity * time) +
-                (system * complexity) + (numOfTasks * mediaContent);
+        double costWithoutPercantage = (fullSalary + fullCostDevices) / 2 + (complexity * time) -
+                (system * complexity * 10) + (numOfTasks * mediaContent);
         double costWithDiscount = costWithoutPercantage - costWithoutPercantage * discount / 100;
         fullCost = (int) (costWithDiscount + costWithDiscount * percantageCompany / 100);
         try {

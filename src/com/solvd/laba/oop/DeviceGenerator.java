@@ -1,5 +1,8 @@
 package com.solvd.laba.oop;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class DeviceGenerator {
 
     private static int lapTopIndex = 0;
@@ -7,25 +10,106 @@ public class DeviceGenerator {
     private static int screenSizeIndex = 0;
     private static int memorySizesIndex = 0;
     private static int wirelessMouseIndex = 0;
-    private static int hasSenSorMouseIndex = 0;
-    protected static String[] namesLaptops = new String[]{"Lenovo", "Apple", "Samsung", "Asus",
-            "Lenovo", "Lenovo", "Samsung", "Apple", "Apple", "Samsung", "Apple"};
-    protected static String[] namesMouses = new String[]{"Lenovo", "Apple", "Samsung", "Asus",
-            "Lenovo", "Lenovo", "Samsung", "Apple", "Apple", "Samsung", "Apple"};
-    protected static double[] screenSizes = new double[]{14, 15.6, 13, 14.5, 13.5, 12.5, 13.8, 14, 14, 15};
-    protected static int[] memorySizes = new int[]{8, 16, 32, 32, 16, 16, 8, 8, 16, 32, 16};
-    protected static boolean[] wireless = new boolean[]{true, true, false, true, true, false, true, true, true, true, false};
-    protected static boolean[] hasSensor = new boolean[]{true, true, true, false, false, false, true, false, false, true, true};
+    private static int hasSensorMouseIndex = 0;
+    protected static List<String> namesLapTops = new ArrayList<>();
+    protected static List<String> namesMouses = new ArrayList<>();
+    protected static List<Double> screenSizes = new ArrayList<>();
+    protected static List<Integer> memorySize = new ArrayList<>();
+    protected static List<Boolean> wireless = new ArrayList<>();
+    protected static List<Boolean> hasSensor = new ArrayList<>();
+
+    static {
+        namesLapTops.add("Lenovo");
+        namesLapTops.add("Apple");
+        namesLapTops.add("Samsung");
+        namesLapTops.add("Lenovo");
+        namesLapTops.add("Lenovo");
+        namesLapTops.add("Lenovo");
+        namesLapTops.add("Apple");
+        namesLapTops.add("Apple");
+        namesLapTops.add("Apple");
+        namesLapTops.add("Lenovo");
+        namesLapTops.add("Apple");
+        namesLapTops.add("Samsung");
+
+        screenSizes.add(14.0);
+        screenSizes.add(15.6);
+        screenSizes.add(13.0);
+        screenSizes.add(14.0);
+        screenSizes.add(15.0);
+        screenSizes.add(13.5);
+        screenSizes.add(14.8);
+        screenSizes.add(15.5);
+        screenSizes.add(13.3);
+        screenSizes.add(14.0);
+        screenSizes.add(15.5);
+        screenSizes.add(17.2);
+
+        memorySize.add(16);
+        memorySize.add(32);
+        memorySize.add(8);
+        memorySize.add(16);
+        memorySize.add(16);
+        memorySize.add(16);
+        memorySize.add(32);
+        memorySize.add(8);
+        memorySize.add(8);
+        memorySize.add(8);
+        memorySize.add(32);
+        memorySize.add(32);
+
+
+        namesMouses.add("Lenovo");
+        namesMouses.add("Apple");
+        namesMouses.add("Samsung");
+        namesMouses.add("Lenovo");
+        namesMouses.add("Lenovo");
+        namesMouses.add("Lenovo");
+        namesMouses.add("Apple");
+        namesMouses.add("Apple");
+        namesMouses.add("Apple");
+        namesMouses.add("Lenovo");
+        namesMouses.add("Apple");
+        namesMouses.add("Samsung");
+
+        wireless.add(true);
+        wireless.add(false);
+        wireless.add(true);
+        wireless.add(true);
+        wireless.add(true);
+        wireless.add(true);
+        wireless.add(true);
+        wireless.add(true);
+        wireless.add(false);
+        wireless.add(false);
+        wireless.add(false);
+        wireless.add(true);
+
+        hasSensor.add(true);
+        hasSensor.add(true);
+        hasSensor.add(false);
+        hasSensor.add(true);
+        hasSensor.add(true);
+        hasSensor.add(false);
+        hasSensor.add(true);
+        hasSensor.add(true);
+        hasSensor.add(false);
+        hasSensor.add(true);
+        hasSensor.add(true);
+        hasSensor.add(true);
+
+
+    }
 
     //methods to iterate the properties of  devices
     public static String getNextDeviceName(String device) {
         switch (device) {
             case "LapTop":
-                String nextLapTopName = namesLaptops[lapTopIndex];
+                String nextLapTopName = namesLapTops.get(lapTopIndex);
                 lapTopIndex++;
-                return nextLapTopName.toString();
+                return nextLapTopName;
             case "Mouse":
-                String nextMouseName = namesMouses[mouseIndex];
+                String nextMouseName = namesMouses.get(mouseIndex);
                 mouseIndex++;
                 return nextMouseName;
             default:
@@ -35,26 +119,26 @@ public class DeviceGenerator {
 
 
     public static double getNextLapTopScreenSize() {
-        double nextLapTopSreenSize = screenSizes[screenSizeIndex];
+        double nextLapTopSreenSize = screenSizes.get(screenSizeIndex);
         screenSizeIndex++;
         return nextLapTopSreenSize;
     }
 
     public static int getNextLapTopMemorySize() {
-        int nextLapTopMemorySize = memorySizes[memorySizesIndex];
+        int nextLapTopMemorySize = memorySize.get(memorySizesIndex);
         memorySizesIndex++;
         return nextLapTopMemorySize;
     }
 
     public static boolean getNextMouseWireless() {
-        boolean nextMouseWireless = wireless[wirelessMouseIndex];
+        boolean nextMouseWireless = wireless.get(wirelessMouseIndex);
         wirelessMouseIndex++;
         return nextMouseWireless;
     }
 
     public static boolean getNextMouseSensor() {
-        boolean nextMouseSensor = hasSensor[hasSenSorMouseIndex];
-        hasSenSorMouseIndex++;
+        boolean nextMouseSensor = hasSensor.get(hasSensorMouseIndex);
+        hasSensorMouseIndex++;
         return nextMouseSensor;
     }
 }

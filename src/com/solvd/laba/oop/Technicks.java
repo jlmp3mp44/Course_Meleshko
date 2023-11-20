@@ -1,10 +1,8 @@
 package com.solvd.laba.oop;
 
 import com.solvd.laba.oop.interfaces.InfoInterface;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -22,12 +20,11 @@ public class Technicks implements InfoInterface {
         this.mouses = mouses;
     }
 
-    public List<LapTop>getLapTops() {
+    public List<LapTop> getLapTops() {
         return lapTops;
     }
 
-    public void setLapTops(ArrayList<LapTop> lapTops)
-    {
+    public void setLapTops(ArrayList<LapTop> lapTops) {
         this.lapTops = lapTops;
     }
 
@@ -61,7 +58,7 @@ public class Technicks implements InfoInterface {
         } catch (FileNotFoundException e) {
             LOGGER.error(e.getMessage());
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            LOGGER.error("Error ocured " + e.getMessage());
         }
     }
 

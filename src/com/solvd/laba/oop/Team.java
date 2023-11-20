@@ -2,30 +2,29 @@ package com.solvd.laba.oop;
 
 import com.solvd.laba.oop.exceptions.SizeOfTeamSmallException;
 import com.solvd.laba.oop.interfaces.InfoInterface;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.*;
+import java.util.Set;
+import java.util.TreeSet;
 
 public class Team implements InfoInterface {
 
     private static final Logger LOGGER = LogManager.getLogger(Team.class);
 
     private final String nameOfTeam;
-    private Set<Developer> developers =  new TreeSet<>();
-    private Set<Manager> managers =  new TreeSet<>();
-    private Set<QAEngineer> qaEngineers =  new TreeSet<>();
+    private Set<Developer> developers = new TreeSet<>();
+    private Set<Manager> managers = new TreeSet<>();
+    private Set<QAEngineer> qaEngineers = new TreeSet<>();
 
     public Team(Set<Developer> developers, Set<Manager> managers, Set<QAEngineer> qaEngineers, String nameOfTeam) {
         this.developers = new TreeSet<>(developers);
-        this.managers =  new TreeSet<>(managers);
-        this.qaEngineers =  new TreeSet<>(qaEngineers);
-        this.nameOfTeam =  nameOfTeam;
+        this.managers = new TreeSet<>(managers);
+        this.qaEngineers = new TreeSet<>(qaEngineers);
+        this.nameOfTeam = nameOfTeam;
     }
 
     public Set<Developer> getDevelopers() {
@@ -51,8 +50,7 @@ public class Team implements InfoInterface {
         return qaEngineers;
     }
 
-    public void setQaEngineers(TreeSet<QAEngineer> qaEngineers)
-    {
+    public void setQaEngineers(TreeSet<QAEngineer> qaEngineers) {
         this.qaEngineers = qaEngineers;
     }
 
@@ -98,7 +96,7 @@ public class Team implements InfoInterface {
         } catch (FileNotFoundException e) {
             LOGGER.error(e.getMessage());
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            LOGGER.error("Error ocured " + e.getMessage());
         }
     }
 }
