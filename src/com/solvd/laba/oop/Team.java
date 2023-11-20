@@ -16,9 +16,9 @@ public class Team implements InfoInterface {
     private static final Logger LOGGER = LogManager.getLogger(Team.class);
 
     private final String nameOfTeam;
-    private Set<Developer> developers = new TreeSet<>();
-    private Set<Manager> managers = new TreeSet<>();
-    private Set<QAEngineer> qaEngineers = new TreeSet<>();
+    private Set<Developer> developers;
+    private Set<Manager> managers;
+    private Set<QAEngineer> qaEngineers;
 
     public Team(Set<Developer> developers, Set<Manager> managers, Set<QAEngineer> qaEngineers, String nameOfTeam) {
         this.developers = new TreeSet<>(developers);
