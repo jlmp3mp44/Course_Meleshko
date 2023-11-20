@@ -117,18 +117,7 @@ public final class CalculatorCost implements CalculatorCostInterface {
 
     public int calculateCostDevices(LinkedList<? extends Device> devices, String category) {
         int costDevice = 0;
-        //= devices.stream()
-        //      .mapToInt(device -> {
-        //        try {
-        //          validateCOstDevices(device, category);
-        //    } catch (PriceDeviceZeroOrLessException e) {
-        //      LOGGER.error(e.getMessage());
-        // }
-        //return device.getCost();
-        //})
-        //.sum();
-        //return costDevice;
-        //
+
         for (Device device : devices) {
             try {
                 validateCOstDevices(device, category);
