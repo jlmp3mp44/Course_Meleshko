@@ -1,15 +1,15 @@
 package com.solvd.laba.oop;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 public class LinkedList<T> implements Iterable<T> {
     private Node<T> head;
     int size;
-
-    public LinkedList() {
-        size = 0;
-    }
+    private static final Logger LOGGER = LogManager.getLogger(Main.class);
 
     static class Node<T> {
         T data;
@@ -63,20 +63,16 @@ public class LinkedList<T> implements Iterable<T> {
 
     public void printList() {
         Node<T> currNode = head;
-
-        System.out.print("LinkedList: ");
-
+        LOGGER.info("LinkedList: ");
         while (currNode != null) {
-            System.out.print(currNode.data + " ");
+            LOGGER.info(currNode.data + " ");
             currNode = currNode.next;
         }
-        System.out.println();
     }
 
     public LinkedList<T> insert(int index, T data) {
         if (index < 0) {
-            System.out.println("Index must be non-negative");
-            return this;
+            throw new IndexOutOfBoundsException();
         }
 
         Node<T> newNode = new Node<>(data);
@@ -100,7 +96,7 @@ public class LinkedList<T> implements Iterable<T> {
             prev.next = newNode;
             newNode.next = currNode;
         } else {
-            System.out.println("Index out of bounds, element not inserted");
+            throw new IndexOutOfBoundsException();
         }
 
         return this;
